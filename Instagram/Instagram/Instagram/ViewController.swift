@@ -10,18 +10,11 @@ import SnapKit
 
 class ViewController: UIViewController {
     
-// basic Background
-    lazy var Background = { () -> UIView in
-        let view = UIView()
-        view.backgroundColor = .white
-        return view
-    }()
-    
 // snapKit prepare
 // 인스타그램 타이틀 입력
     lazy var titleBox = { () -> UIView in
        let view = UIView()
-        view.backgroundColor = .blue
+        view.backgroundColor = .white
         return view
     }()
 // 그림 로고를 넣는 방법이 있었지... 굳이 글자에 폰트 안넣고...
@@ -33,6 +26,30 @@ class ViewController: UIViewController {
 //        view.font = UIFont(name: , size: 15)
 //        return view
 //    }()
+    lazy var btnGramImage = { () -> UIButton in
+       let view = UIButton()
+        view.setImage(UIImage(named: "InstagramLogo.png"), for: .normal)
+        return view
+    }()
+    
+    lazy var btnUploadImg = { () -> UIButton in
+        let view = UIButton()
+        view.setImage(UIImage(named: "upload.png"), for: .normal)
+        return view
+    }()
+    
+    lazy var btnHeartImg = { () -> UIButton in
+        let view = UIButton()
+        view.setImage(UIImage(named: "heart.png"), for: .normal)
+        return view
+    }()
+
+    lazy var btnMessageImg = { () -> UIButton in
+        let view = UIButton()
+        view.setImage(UIImage(named: "Message.png"), for: .normal)
+        return view
+    }()
+    
 // 스토리 나오는 공간
     lazy var storyBox = { () -> UIView in
         let view = UIView()
@@ -66,6 +83,33 @@ class ViewController: UIViewController {
             make.width.equalToSuperview()
             make.height.equalTo(40)
         }
+        
+        titleBox.addSubview(btnGramImage)
+        btnGramImage.snp.makeConstraints { (make) in
+            make.left.equalTo(titleBox.snp.left).offset(10)
+            make.centerY.equalTo(titleBox.snp.centerY)
+            make.width.equalTo(titleBox.snp.width).dividedBy(4)
+            make.height.equalTo(35)
+        }
+        titleBox.addSubview(btnMessageImg)
+        btnMessageImg.snp.makeConstraints { (make) in
+            make.right.equalTo(titleBox.snp.right).offset(-15)
+            make.centerY.equalTo(titleBox.snp.centerY)
+            make.width.height.equalTo(titleBox.snp.height).dividedBy(1.5)
+        }
+        titleBox.addSubview(btnHeartImg)
+        btnHeartImg.snp.makeConstraints { (make) in
+            make.right.equalTo(btnMessageImg.snp.left).offset(-15)
+            make.centerY.equalTo(titleBox.snp.centerY)
+            make.width.height.equalTo(titleBox.snp.height).dividedBy(1.5)
+        }
+        titleBox.addSubview(btnUploadImg)
+        btnUploadImg.snp.makeConstraints { (make) in
+            make.right.equalTo(btnHeartImg.snp.left).offset(-15)
+            make.centerY.equalTo(titleBox.snp.centerY)
+            make.width.height.equalTo(titleBox.snp.height).dividedBy(1.5)
+        }
+        
 //        titleBox.addSubview(InstagramTxt)
 //        InstagramTxt.snp.makeConstraints { (make) in
 //            make.width.equalToSuperview().dividedBy(1.1)
