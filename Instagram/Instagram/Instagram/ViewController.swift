@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class ViewController: UIViewController {
-    
+///  --------------------------------------------------------------------------------
 // snapKit prepare
 // 인스타그램 타이틀 입력
     lazy var titleBox = { () -> UIView in
@@ -49,29 +49,74 @@ class ViewController: UIViewController {
         view.setImage(UIImage(named: "Message.png"), for: .normal)
         return view
     }()
-    
-// 스토리 나오는 공간
-    lazy var storyBox = { () -> UIView in
-        let view = UIView()
-        view.backgroundColor = .gray
-        return view
-    }()
-    
+///  --------------------------------------------------------------------------------
+// 스토리 나오는 공간
+    let storyBox = UIScrollView()
+    let storyView = UIView()
+    let myStory = UIView()
+    let story1 = UIView()
+    let story2 = UIView()
+    let story3 = UIView()
+    let story4 = UIView()
+///  --------------------------------------------------------------------------------
 // 콘텐츠 나오는 공간
     let contentBox = UIScrollView()
     let contentView = UIView()
     let content1 = UIView()
+    let nameLine1 = UIView()
+    let profileImg = UIView()
+    let profiletxt = UILabel()
+    let profileAdd = UIButton()
+    lazy var picLine1 = { () -> UIButton in
+        let view = UIButton()
+        view.setImage(UIImage(named: "shop.jpg"), for: .normal)
+        return view
+    }()
+    let funLine1 = UIView()
+    lazy var btnLike1 = {() -> UIButton in
+        let view = UIButton()
+        view.setImage(UIImage(named: "heart.png"), for: .normal)
+        return view
+    }()
+    lazy var btnReply1 = {() -> UIButton in
+        let view = UIButton()
+        view.setImage(UIImage(named: "comment.png"), for: .normal)
+        return view
+    }()
+    lazy var btnSendMessage1 = {() -> UIButton in
+        let view = UIButton()
+        view.setImage(UIImage(named: "Message.png"), for: .normal)
+        return view
+    }()
+    lazy var btnSaveContent1 = {() -> UIButton in
+        let view = UIButton()
+        view.setImage(UIImage(named: "save.png"), for: .normal)
+        return view
+    }()
+    let statusLine1 = UILabel()
+    let workLine1 = UILabel()
+    let replyLine1 = UIView()
+    let myStoryMulti1 = UIButton()
+    let lblRePly = UITextField()
+    let timeLine1 = UILabel()
+
+///  --------------------------------------------------------------------------------
     let content2 = UIView()
+    lazy var picLine2 = { () -> UIButton in
+        let view = UIButton()
+        view.setImage(UIImage(named: "tiger.jpg"), for: .normal)
+        return view
+    }()
     let content3 = UIView()
     let content4 = UIView()
     let content5 = UIView()
-    
+///  --------------------------------------------------------------------------------
     lazy var pageBox = { () -> UIView in
         let view = UIView()
         view.backgroundColor = .red
         return view
     }()
-    
+///  --------------------------------------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -109,7 +154,7 @@ class ViewController: UIViewController {
             make.centerY.equalTo(titleBox.snp.centerY)
             make.width.height.equalTo(titleBox.snp.height).dividedBy(1.5)
         }
-        
+///  --------------------------------------------------------------------------------
 //        titleBox.addSubview(InstagramTxt)
 //        InstagramTxt.snp.makeConstraints { (make) in
 //            make.width.equalToSuperview().dividedBy(1.1)
@@ -118,12 +163,63 @@ class ViewController: UIViewController {
 // Story Scroll WORKSPACE
         self.view.addSubview(storyBox)
         storyBox.snp.makeConstraints { (make) in
-            make.top.equalTo(titleBox.snp.bottom).offset(5)
-            make.width.equalToSuperview()
-            make.height.equalTo(60)
+            make.top.equalTo(titleBox.snp.bottom)
+            make.height.equalTo(80)
+            make.width.equalTo(400)
         }
-
+        storyBox.backgroundColor = .clear
         
+        storyBox.addSubview(storyView)
+        storyBox.snp.makeConstraints { (make) in
+            make.width.equalTo(storyBox.snp.width)
+            make.height.equalTo(storyBox.snp.height)
+            make.top.equalTo(storyBox.snp.top)
+        }
+        
+        _ = [myStory,story1,story2,story3,story4].map {self.storyView.addSubview($0)}
+        
+        myStory.backgroundColor = .yellow
+        story1.backgroundColor = .gray
+        story2.backgroundColor = .darkGray
+        story3.backgroundColor = .systemGray
+        story4.backgroundColor = .systemGray3
+        
+        myStory.snp.makeConstraints { (make) in
+            make.width.height.equalTo(70)
+            make.centerY.equalTo(storyBox.snp.centerY)
+        }
+        myStory.layer.cornerRadius = 35
+        
+        story1.snp.makeConstraints { (make) in
+            make.width.height.equalTo(70)
+            make.centerY.equalTo(storyBox.snp.centerY)
+            make.leading.equalTo(myStory.snp.trailing).offset(20)
+        }
+        story1.layer.cornerRadius = 35
+        
+        story2.snp.makeConstraints { (make) in
+            make.width.height.equalTo(70)
+            make.centerY.equalTo(storyBox.snp.centerY)
+            make.leading.equalTo(story1.snp.trailing).offset(20)
+        }
+        story2.layer.cornerRadius = 35
+
+        story3.snp.makeConstraints { (make) in
+            make.width.height.equalTo(70)
+            make.centerY.equalTo(storyBox.snp.centerY)
+            make.leading.equalTo(story2.snp.trailing).offset(20)
+        }
+        story3.layer.cornerRadius = 35
+        
+        story4.snp.makeConstraints { (make) in
+            make.width.height.equalTo(70)
+            make.centerY.equalTo(storyBox.snp.centerY)
+            make.leading.equalTo(story3.snp.trailing).offset(20)
+            make.bottom.equalToSuperview()
+        }
+        story4.layer.cornerRadius = 35
+///  --------------------------------------------------------------------------------
+
 // Content Scroll WORKSPACE
         self.view.addSubview(contentBox)
         contentBox.snp.makeConstraints { (make) in
@@ -140,7 +236,7 @@ class ViewController: UIViewController {
         
         _ = [content1,content2,content3,content4,content5].map { self.contentView.addSubview($0) }
         
-        content1.backgroundColor = .red
+        content1.backgroundColor = .clear
         content2.backgroundColor = .blue
         content3.backgroundColor = .gray
         content4.backgroundColor = .darkGray
@@ -149,59 +245,167 @@ class ViewController: UIViewController {
         
         content1.snp.makeConstraints { (make) in
             make.leading.top.trailing.equalToSuperview()
-            make.height.equalTo(250)
+            make.height.equalTo(650)
+        }
+        content1.addSubview(nameLine1)
+        nameLine1.snp.makeConstraints { (make) in
+            make.top.equalTo(content1.snp.top)
+            make.height.equalTo(50)
+            make.width.equalToSuperview()
         }
         
+        nameLine1.addSubview(profileImg)
+        profileImg.snp.makeConstraints { (make) in
+            make.left.equalTo(nameLine1.snp.left).offset(10)
+            make.height.width.equalTo(44)
+        }
+        profileImg.backgroundColor = .darkGray
+        profileImg.layer.cornerRadius = 22
+        
+        nameLine1.addSubview(profiletxt)
+        profiletxt.snp.makeConstraints { (make) in
+            make.left.equalTo(profileImg.snp.right).offset(10)
+            make.height.equalTo(nameLine1.snp.height)
+            make.width.equalToSuperview()
+        }
+        profiletxt.text = "Tester_insta236"
+        
+        content1.addSubview(picLine1)
+        picLine1.snp.makeConstraints { (make) in
+            make.top.equalTo(nameLine1.snp.bottom).offset(2.5)
+            make.height.equalTo(400)
+            make.width.equalToSuperview()
+        }
+        
+        content1.addSubview(funLine1)
+        funLine1.snp.makeConstraints { (make) in
+            make.top.equalTo(picLine1.snp.bottom)
+            make.height.equalTo(50)
+            make.width.equalToSuperview()
+        }
+        
+        funLine1.addSubview(btnLike1)
+        btnLike1.snp.makeConstraints { (make) in
+            make.centerY.equalTo(funLine1.snp.centerY)
+            make.top.equalTo(funLine1.snp.top)
+            make.left.equalTo(funLine1.snp.left).offset(10)
+            make.height.width.equalTo(40)
+        }
+        
+        funLine1.addSubview(btnReply1)
+        btnReply1.snp.makeConstraints { (make) in
+            make.centerY.equalTo(btnLike1.snp.centerY)
+            make.left.equalTo(btnLike1.snp.right).offset(10)
+            make.height.width.equalTo(35)
+        }
+        
+        funLine1.addSubview(btnSendMessage1)
+        btnSendMessage1.snp.makeConstraints { (make) in
+            make.centerY.equalTo(btnLike1.snp.centerY)
+            make.left.equalTo(btnReply1.snp.right).offset(10)
+            make.height.width.equalTo(40)
+        }
+        
+        funLine1.addSubview(btnSaveContent1)
+        btnSaveContent1.snp.makeConstraints { (make) in
+            make.centerY.equalTo(btnLike1.snp.centerY)
+            make.right.equalTo(funLine1.snp.right)
+            make.height.width.equalTo(50)
+        }
+        
+        content1.addSubview(statusLine1)
+        statusLine1.snp.makeConstraints { (make) in
+            make.top.equalTo(funLine1.snp.bottom).offset(-10)
+            make.height.equalTo(50)
+            make.width.equalToSuperview()
+        }
+//        workLine1.text = " 좋아요 /(count) 개"
+        statusLine1.text = " 좋아요 5 개"
+        
+        content1.addSubview(workLine1)
+        workLine1.snp.makeConstraints { (make) in
+            make.top.equalTo(statusLine1.snp.bottom).offset(-10)
+            make.height.equalTo(50)
+            make.width.equalToSuperview()
+        }
+        let nameTxt = profiletxt.text!
+        let contentTxt: String = " 오늘 인스타그램 test test \n #좋아요 #싫어요 #인스타그램"
+        workLine1.text = "\(nameTxt)   \(contentTxt)"
+        workLine1.numberOfLines = 4
+        if workLine1.adjustsFontSizeToFitWidth == false {
+            workLine1.adjustsFontSizeToFitWidth = true
+        }
+
+        content1.addSubview(replyLine1)
+        replyLine1.snp.makeConstraints { (make) in
+            make.top.equalTo(workLine1.snp.bottom)
+            make.height.equalTo(45)
+            make.width.equalToSuperview()
+        }
+        replyLine1.backgroundColor = .clear
+        
+        replyLine1.addSubview(myStoryMulti1)
+        myStoryMulti1.snp.makeConstraints { (make) in
+            make.centerY.equalTo(replyLine1.snp.centerY)
+            make.height.width.equalTo(25)
+            make.left.equalTo(replyLine1.snp.left).offset(10)
+        }
+        myStoryMulti1.backgroundColor = .yellow
+        myStoryMulti1.layer.cornerRadius = 12.5
+        
+        replyLine1.addSubview(lblRePly)
+        lblRePly.snp.makeConstraints { (make) in
+            make.centerY.equalTo(replyLine1.snp.centerY)
+            make.left.equalTo(replyLine1.snp.left).offset(40)
+            make.height.width.equalToSuperview().dividedBy(1.3)
+        }
+        lblRePly.backgroundColor = .lightText
+        lblRePly.text = " 댓글 입력 "
+                
+        content1.addSubview(timeLine1)
+        timeLine1.snp.makeConstraints { (make) in
+            make.top.equalTo(replyLine1.snp.bottom)
+            make.height.equalTo(20)
+            make.width.equalToSuperview()
+        }
+        timeLine1.text = "   4분 전 "
+        timeLine1.textColor = .gray
+        timeLine1.textAlignment = .natural
+
+/// --------------------------------------------------------------------------------
         content2.snp.makeConstraints { (make) in
             make.top.equalTo(content1.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(250)
+            make.height.equalTo(600)
         }
         
+        content2.addSubview(picLine2)
+        picLine2.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        
+/// --------------------------------------------------------------------------------
         content3.snp.makeConstraints { (make) in
             make.top.equalTo(content2.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(250)
+            make.height.equalTo(600)
         }
         
         content4.snp.makeConstraints { (make) in
             make.top.equalTo(content3.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(250)
+            make.height.equalTo(600)
         }
         
         content5.snp.makeConstraints { (make) in
             make.top.equalTo(content4.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(250)
+            make.height.equalTo(600)
             make.bottom.equalToSuperview()
         }
-//
-//        self.view.addSubview(Background)
-//
-//        self.view.addSubview(pageBox)
-//
-//        Background.snp.makeConstraints { (make) in
-//            make.edges.equalTo(self.view)
-//        }
-//
-//// snapKit workspace
-//        titleBox.snp.makeConstraints { (make) in
-//            make.width.equalTo(Background.snp.height)
-//            make.height.equalTo(70)
-//        }
-//
-//        storyBox.snp.makeConstraints { (make) in
-//            make.width.height.equalTo(titleBox)
-//            make.top.equalTo(titleBox.snp.bottom)
-//        }
-//
-//        pageBox.snp.makeConstraints { (make) in
-//            make.width.height.equalTo(titleBox)
-//            make.top.equalTo(contentBox.snp.bottom)
-//        }
-    }
+///  --------------------------------------------------------------------------------
 
+    }
 }
 
 #if DEBUG

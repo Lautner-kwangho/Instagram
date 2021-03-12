@@ -14,6 +14,9 @@
 		E41D56D825F9F38000F88663 /* Message.png in Resources */ = {isa = PBXBuildFile; fileRef = E41D56D325F9F37F00F88663 /* Message.png */; };
 		E41D56D925F9F38000F88663 /* save.png in Resources */ = {isa = PBXBuildFile; fileRef = E41D56D425F9F38000F88663 /* save.png */; };
 		E41D56DA25F9F38000F88663 /* upload.png in Resources */ = {isa = PBXBuildFile; fileRef = E41D56D525F9F38000F88663 /* upload.png */; };
+		E41D56E025FAFEE900F88663 /* shop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E41D56DE25FAFEE900F88663 /* shop.jpg */; };
+		E41D56E125FAFEE900F88663 /* tiger.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E41D56DF25FAFEE900F88663 /* tiger.jpg */; };
+		E41D56E425FB0A9F00F88663 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = E41D56E325FB0A9F00F88663 /* comment.png */; };
 		E43BE34525F8B081009A70D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43BE34425F8B081009A70D8 /* AppDelegate.swift */; };
 		E43BE34725F8B081009A70D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43BE34625F8B081009A70D8 /* SceneDelegate.swift */; };
 		E43BE34925F8B081009A70D8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43BE34825F8B081009A70D8 /* ViewController.swift */; };
@@ -32,6 +35,9 @@
 		E41D56D325F9F37F00F88663 /* Message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Message.png; sourceTree = "<group>"; };
 		E41D56D425F9F38000F88663 /* save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = save.png; sourceTree = "<group>"; };
 		E41D56D525F9F38000F88663 /* upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload.png; sourceTree = "<group>"; };
+		E41D56DE25FAFEE900F88663 /* shop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shop.jpg; sourceTree = "<group>"; };
+		E41D56DF25FAFEE900F88663 /* tiger.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tiger.jpg; sourceTree = "<group>"; };
+		E41D56E325FB0A9F00F88663 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
 		E43BE34125F8B081009A70D8 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E43BE34425F8B081009A70D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E43BE34625F8B081009A70D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +86,9 @@
 				E41D56D325F9F37F00F88663 /* Message.png */,
 				E41D56D425F9F38000F88663 /* save.png */,
 				E41D56D525F9F38000F88663 /* upload.png */,
+				E41D56E325FB0A9F00F88663 /* comment.png */,
+				E41D56DE25FAFEE900F88663 /* shop.jpg */,
+				E41D56DF25FAFEE900F88663 /* tiger.jpg */,
 			);
 			path = Image;
 			sourceTree = "<group>";
@@ -177,6 +186,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E41D56D725F9F38000F88663 /* instagram.png in Resources */,
+				E41D56E425FB0A9F00F88663 /* comment.png in Resources */,
+				E41D56E025FAFEE900F88663 /* shop.jpg in Resources */,
 				E41D56CE25F9DB9800F88663 /* InstagramLogo.png in Resources */,
 				E41D56D925F9F38000F88663 /* save.png in Resources */,
 				E43BE35125F8B082009A70D8 /* LaunchScreen.storyboard in Resources */,
@@ -185,6 +196,7 @@
 				E41D56DA25F9F38000F88663 /* upload.png in Resources */,
 				E41D56D825F9F38000F88663 /* Message.png in Resources */,
 				E43BE34C25F8B081009A70D8 /* Main.storyboard in Resources */,
+				E41D56E125FAFEE900F88663 /* tiger.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
