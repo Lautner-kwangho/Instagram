@@ -52,6 +52,16 @@ class ViewController: UIViewController {
 ///  --------------------------------------------------------------------------------
 // 스토리 나오는 공간
     let storyBox = UIScrollView()
+    
+//    struct storyBox: View {
+//        var body: some View {
+//            ScrollView(.horizontal, showsIndicators: false) {
+//                HStack {
+//                }
+//            }
+//        }
+//    }
+    
     let storyView = UIView()
     let myStory = UIView()
     let story1 = UIView()
@@ -165,13 +175,12 @@ class ViewController: UIViewController {
         storyBox.snp.makeConstraints { (make) in
             make.top.equalTo(titleBox.snp.bottom)
             make.height.equalTo(80)
-            make.width.equalTo(400)
+            make.width.equalToSuperview()
         }
-        storyBox.backgroundColor = .clear
         
         storyBox.addSubview(storyView)
-        storyBox.snp.makeConstraints { (make) in
-            make.width.equalTo(storyBox.snp.width)
+        storyView.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
             make.height.equalTo(storyBox.snp.height)
             make.top.equalTo(storyBox.snp.top)
         }
@@ -186,36 +195,35 @@ class ViewController: UIViewController {
         
         myStory.snp.makeConstraints { (make) in
             make.width.height.equalTo(70)
-            make.centerY.equalTo(storyBox.snp.centerY)
+            make.centerY.equalTo(storyView.snp.centerY)
         }
         myStory.layer.cornerRadius = 35
         
         story1.snp.makeConstraints { (make) in
             make.width.height.equalTo(70)
-            make.centerY.equalTo(storyBox.snp.centerY)
-            make.leading.equalTo(myStory.snp.trailing).offset(20)
+            make.centerY.equalTo(storyView.snp.centerY)
+            make.left.equalTo(myStory.snp.right).offset(20)
         }
         story1.layer.cornerRadius = 35
         
         story2.snp.makeConstraints { (make) in
             make.width.height.equalTo(70)
-            make.centerY.equalTo(storyBox.snp.centerY)
-            make.leading.equalTo(story1.snp.trailing).offset(20)
+            make.centerY.equalTo(storyView.snp.centerY)
+            make.left.equalTo(story1.snp.right).offset(20)
         }
         story2.layer.cornerRadius = 35
 
         story3.snp.makeConstraints { (make) in
             make.width.height.equalTo(70)
-            make.centerY.equalTo(storyBox.snp.centerY)
-            make.leading.equalTo(story2.snp.trailing).offset(20)
+            make.centerY.equalTo(storyView.snp.centerY)
+            make.left.equalTo(story2.snp.right).offset(20)
         }
         story3.layer.cornerRadius = 35
         
         story4.snp.makeConstraints { (make) in
-            make.width.height.equalTo(70)
-            make.centerY.equalTo(storyBox.snp.centerY)
+            make.width.height.equalTo(700)
+            make.centerY.equalTo(storyView.snp.centerY)
             make.leading.equalTo(story3.snp.trailing).offset(20)
-            make.bottom.equalToSuperview()
         }
         story4.layer.cornerRadius = 35
 ///  --------------------------------------------------------------------------------
