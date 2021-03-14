@@ -23,6 +23,9 @@
 		E471602725FDAEE0009A7123 /* shop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E471601E25FDAEE0009A7123 /* shop.jpg */; };
 		E471602825FDAEE0009A7123 /* upload.png in Resources */ = {isa = PBXBuildFile; fileRef = E471601F25FDAEE0009A7123 /* upload.png */; };
 		E471602925FDAEE0009A7123 /* Message.png in Resources */ = {isa = PBXBuildFile; fileRef = E471602025FDAEE0009A7123 /* Message.png */; };
+		E4B2338425FDD87200A17582 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = E4B2338125FDD87200A17582 /* home.png */; };
+		E4B2338525FDD87200A17582 /* magnifying-glass.png in Resources */ = {isa = PBXBuildFile; fileRef = E4B2338225FDD87200A17582 /* magnifying-glass.png */; };
+		E4B2338625FDD87200A17582 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = E4B2338325FDD87200A17582 /* setting.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		E471601E25FDAEE0009A7123 /* shop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shop.jpg; sourceTree = "<group>"; };
 		E471601F25FDAEE0009A7123 /* upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upload.png; sourceTree = "<group>"; };
 		E471602025FDAEE0009A7123 /* Message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Message.png; sourceTree = "<group>"; };
+		E4B2338125FDD87200A17582 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		E4B2338225FDD87200A17582 /* magnifying-glass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "magnifying-glass.png"; sourceTree = "<group>"; };
+		E4B2338325FDD87200A17582 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,9 @@
 		E471602B25FDAEEE009A7123 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				E4B2338125FDD87200A17582 /* home.png */,
+				E4B2338225FDD87200A17582 /* magnifying-glass.png */,
+				E4B2338325FDD87200A17582 /* setting.png */,
 				E471601925FDAEE0009A7123 /* comment.png */,
 				E471601B25FDAEE0009A7123 /* heart.png */,
 				E471601825FDAEE0009A7123 /* instagram.png */,
@@ -193,8 +202,11 @@
 				E471602225FDAEE0009A7123 /* comment.png in Resources */,
 				E471602325FDAEE0009A7123 /* InstagramLogo.png in Resources */,
 				E471602425FDAEE0009A7123 /* heart.png in Resources */,
+				E4B2338625FDD87200A17582 /* setting.png in Resources */,
 				E471602125FDAEE0009A7123 /* instagram.png in Resources */,
 				E43FD20B25FDAA3100CBF2FB /* Main.storyboard in Resources */,
+				E4B2338425FDD87200A17582 /* home.png in Resources */,
+				E4B2338525FDD87200A17582 /* magnifying-glass.png in Resources */,
 				E471602625FDAEE0009A7123 /* tiger.jpg in Resources */,
 				E471602925FDAEE0009A7123 /* Message.png in Resources */,
 			);

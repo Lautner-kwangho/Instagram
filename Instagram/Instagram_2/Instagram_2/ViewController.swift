@@ -51,7 +51,7 @@ class ViewController: UIViewController {
     }()
 ///  --------------------------------------------------------------------------------
 // 스토리 나오는 공간
-    let storyBox = UIScrollView()
+    let storyBox = UIView()
     
 //    struct storyBox: View {
 //        var body: some View {
@@ -62,7 +62,7 @@ class ViewController: UIViewController {
 //        }
 //    }
     
-    let storyView = UIView()
+    let storyView = UIScrollView()
     let myStory = UIView()
     let story1 = UIView()
     let story2 = UIView()
@@ -123,7 +123,28 @@ class ViewController: UIViewController {
 ///  --------------------------------------------------------------------------------
     lazy var pageBox = { () -> UIView in
         let view = UIView()
-        view.backgroundColor = .red
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    lazy var btnHome = {() -> UIButton in
+        let view = UIButton()
+        view.setImage(UIImage(named: "home.png"), for: .normal)
+        return view
+    }()
+    lazy var btnMagifying = {() -> UIButton in
+        let view = UIButton()
+        view.setImage(UIImage(named: "magnifying-glass.png"), for: .normal)
+        return view
+    }()
+    lazy var btnSetting = {() -> UIButton in
+        let view = UIButton()
+        view.setImage(UIImage(named: "setting.png"), for: .normal)
+        return view
+    }()
+    lazy var btnProfile = {() -> UIButton in
+        let view = UIButton()
+        view.setImage(UIImage(named: "tiger.jpg"), for: .normal)
         return view
     }()
 ///  --------------------------------------------------------------------------------
@@ -138,7 +159,56 @@ class ViewController: UIViewController {
             make.width.equalToSuperview()
             make.height.equalTo(40)
         }
+        funcTitleBox()
+       
+// Story Scroll WORKSPACE
+        self.view.addSubview(storyBox)
+        storyBox.snp.makeConstraints { (make) in
+            make.top.equalTo(titleBox.snp.bottom)
+            make.height.equalTo(80)
+            make.width.equalToSuperview()
+        }
+        funcStoryBox()
+
+// Content Scroll WORKSPACE
+        self.view.addSubview(contentBox)
+        contentBox.snp.makeConstraints { (make) in
+            make.top.equalTo(storyBox.snp.bottom).offset(5)
+            make.height.equalTo(700)
+            make.width.equalToSuperview()
+        }
         
+        contentBox.addSubview(contentView)
+        contentView.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.centerX.top.bottom.equalToSuperview()
+        }
+        
+        _ = [content1,content2,content3,content4,content5].map { self.contentView.addSubview($0) }
+        
+        content1.backgroundColor = .clear
+        content2.backgroundColor = .blue
+        content3.backgroundColor = .gray
+        content4.backgroundColor = .darkGray
+        content5.backgroundColor = .lightGray
+
+        funcContent1()
+        funcContent2()
+        funcContent3()
+        funcContent4()
+        funcContent5()
+// Page Shift WORKSPACE
+        self.view.addSubview(pageBox)
+        pageBox.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview()
+            make.height.equalTo(60)
+            make.width.equalToSuperview()
+        }
+        
+        funcPage()
+    }
+/// --------------------------------------------------------------------------------------
+    func funcTitleBox() {
         titleBox.addSubview(btnGramImage)
         btnGramImage.snp.makeConstraints { (make) in
             make.left.equalTo(titleBox.snp.left).offset(10)
@@ -170,21 +240,17 @@ class ViewController: UIViewController {
 //            make.width.equalToSuperview().dividedBy(1.1)
 //            make.centerX.top.bottom.equalToSuperview()
 //        }
-// Story Scroll WORKSPACE
-        self.view.addSubview(storyBox)
-        storyBox.snp.makeConstraints { (make) in
-            make.top.equalTo(titleBox.snp.bottom)
-            make.height.equalTo(80)
-            make.width.equalToSuperview()
-        }
-        
+    }
+    
+    func funcStoryBox() {
         storyBox.addSubview(storyView)
         storyView.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
             make.height.equalTo(storyBox.snp.height)
             make.top.equalTo(storyBox.snp.top)
         }
-        
+        storyView.alwaysBounceHorizontal = true
+    
         _ = [myStory,story1,story2,story3,story4].map {self.storyView.addSubview($0)}
         
         myStory.backgroundColor = .yellow
@@ -221,36 +287,14 @@ class ViewController: UIViewController {
         story3.layer.cornerRadius = 35
         
         story4.snp.makeConstraints { (make) in
-            make.width.height.equalTo(700)
+            make.width.height.equalTo(70)
             make.centerY.equalTo(storyView.snp.centerY)
             make.leading.equalTo(story3.snp.trailing).offset(20)
         }
         story4.layer.cornerRadius = 35
-///  --------------------------------------------------------------------------------
-
-// Content Scroll WORKSPACE
-        self.view.addSubview(contentBox)
-        contentBox.snp.makeConstraints { (make) in
-            make.top.equalTo(storyBox.snp.bottom).offset(5)
-            make.height.equalTo(700)
-            make.width.equalToSuperview()
-        }
-        
-        contentBox.addSubview(contentView)
-        contentView.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
-            make.centerX.top.bottom.equalToSuperview()
-        }
-        
-        _ = [content1,content2,content3,content4,content5].map { self.contentView.addSubview($0) }
-        
-        content1.backgroundColor = .clear
-        content2.backgroundColor = .blue
-        content3.backgroundColor = .gray
-        content4.backgroundColor = .darkGray
-        content5.backgroundColor = .lightGray
-
-        
+    }
+    
+    func funcContent1() {
         content1.snp.makeConstraints { (make) in
             make.leading.top.trailing.equalToSuperview()
             make.height.equalTo(650)
@@ -379,8 +423,9 @@ class ViewController: UIViewController {
         timeLine1.text = "   4분 전 "
         timeLine1.textColor = .gray
         timeLine1.textAlignment = .natural
-
-/// --------------------------------------------------------------------------------
+    }
+    
+    func funcContent2() {
         content2.snp.makeConstraints { (make) in
             make.top.equalTo(content1.snp.bottom)
             make.leading.trailing.equalToSuperview()
@@ -391,28 +436,60 @@ class ViewController: UIViewController {
         picLine2.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        
-/// --------------------------------------------------------------------------------
+    }
+    
+    func funcContent3() {
         content3.snp.makeConstraints { (make) in
             make.top.equalTo(content2.snp.bottom)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(600)
         }
-        
+    }
+    
+    func funcContent4() {
         content4.snp.makeConstraints { (make) in
             make.top.equalTo(content3.snp.bottom)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(600)
         }
-        
+    }
+    
+    func funcContent5() {
         content5.snp.makeConstraints { (make) in
             make.top.equalTo(content4.snp.bottom)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(600)
             make.bottom.equalToSuperview()
         }
-///  --------------------------------------------------------------------------------
-
+    }
+    
+    func funcPage() {
+        pageBox.addSubview(btnHome)
+        btnHome.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.centerY.equalTo(pageBox.snp.centerY)
+            make.left.equalTo(pageBox.snp.left).offset(20)
+            make.height.width.equalTo(pageBox.snp.height).dividedBy(1.2)
+        }
+        pageBox.addSubview(btnMagifying)
+        btnMagifying.snp.makeConstraints { (make) in
+            make.centerY.equalTo(pageBox.snp.centerY)
+            make.left.equalTo(btnHome.snp.right).offset(60)
+            make.height.width.equalTo(pageBox.snp.height).dividedBy(1.4)
+        }
+        pageBox.addSubview(btnSetting)
+        btnSetting.snp.makeConstraints { (make) in
+            make.centerY.equalTo(pageBox.snp.centerY)
+            make.left.equalTo(btnMagifying.snp.right).offset(60)
+            make.height.width.equalTo(pageBox.snp.height).dividedBy(1.3)
+        }
+        pageBox.addSubview(btnProfile)
+        btnProfile.snp.makeConstraints { (make) in
+            make.centerY.equalTo(pageBox.snp.centerY)
+            make.left.equalTo(btnSetting.snp.right).offset(60)
+            make.height.width.equalTo(pageBox.snp.height).dividedBy(1.2)
+        }
+        btnProfile.layer.cornerRadius = 50
     }
 }
 
