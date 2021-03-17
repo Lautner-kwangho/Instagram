@@ -17,7 +17,6 @@
 		E45454F1260120E800332472 /* IPTV.png in Resources */ = {isa = PBXBuildFile; fileRef = E45454D9260120E500332472 /* IPTV.png */; };
 		E45454F2260120E800332472 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = E45454DA260120E500332472 /* camera.png */; };
 		E45454F3260120E800332472 /* commentUpdate.png in Resources */ = {isa = PBXBuildFile; fileRef = E45454DB260120E500332472 /* commentUpdate.png */; };
-		E45454F4260120E800332472 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = E45454DC260120E500332472 /* heart.png */; };
 		E45454F5260120E800332472 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = E45454DD260120E500332472 /* list.png */; };
 		E45454F6260120E800332472 /* 베이징.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E45454DE260120E500332472 /* 베이징.jpg */; };
 		E45454F7260120E800332472 /* personUpdate.png in Resources */ = {isa = PBXBuildFile; fileRef = E45454DF260120E600332472 /* personUpdate.png */; };
@@ -67,7 +66,6 @@
 		E45454D9260120E500332472 /* IPTV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IPTV.png; sourceTree = "<group>"; };
 		E45454DA260120E500332472 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		E45454DB260120E500332472 /* commentUpdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = commentUpdate.png; sourceTree = "<group>"; };
-		E45454DC260120E500332472 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = heart.png; path = "../../../../../Downloads/png 파일/heart.png"; sourceTree = "<group>"; };
 		E45454DD260120E500332472 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
 		E45454DE260120E500332472 /* 베이징.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "베이징.jpg"; sourceTree = "<group>"; };
 		E45454DF260120E600332472 /* personUpdate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personUpdate.png; sourceTree = "<group>"; };
@@ -178,7 +176,6 @@
 				E45454EF260120E800332472 /* blackPerson.png */,
 				E45454DA260120E500332472 /* camera.png */,
 				E45454DB260120E500332472 /* commentUpdate.png */,
-				E45454DC260120E500332472 /* heart.png */,
 				E45454E4260120E600332472 /* heartUpdate.png */,
 				E45454E8260120E700332472 /* homeUpdate.png */,
 				E45454D9260120E500332472 /* IPTV.png */,
@@ -301,7 +298,6 @@
 				E471602625FDAEE0009A7123 /* tiger.jpg in Resources */,
 				E4545503260120E800332472 /* 병마.jpg in Resources */,
 				E4545508260120E800332472 /* blackHeart.png in Resources */,
-				E45454F4260120E800332472 /* heart.png in Resources */,
 				E45454F1260120E800332472 /* IPTV.png in Resources */,
 				E471602925FDAEE0009A7123 /* Message.png in Resources */,
 				E45454F9260120E800332472 /* storyStyle3.png in Resources */,
