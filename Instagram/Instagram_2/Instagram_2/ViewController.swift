@@ -40,6 +40,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         myTableView.snp.makeConstraints { (make) in
             make.width.height.equalToSuperview()
+            make.top.equalToSuperview().offset(50)
         }
         myTableView.register(instagramContentCell.self, forCellReuseIdentifier: "Cell")
     }
@@ -49,7 +50,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 60
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -158,33 +159,34 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         btnGoToHome.snp.makeConstraints { (make) in
             make.height.width.equalTo(40)
-            make.centerY.equalTo(FooterInSection.snp.centerY)
-            make.left.equalTo(FooterInSection.snp.left).offset(10)
+            make.top.equalTo(FooterInSection.snp.top).offset(5)
+            make.left.equalTo(FooterInSection.snp.left).offset(20)
         }
         btnGoToMagnifyingGlass.snp.makeConstraints { (make) in
-            make.height.width.equalTo(40)
-            make.centerY.equalTo(btnGoToHome.snp.centerY)
-            make.left.equalTo(btnGoToHome.snp.right).offset(15)
+            make.height.width.equalTo(35)
+            make.top.equalTo(btnGoToHome.snp.top).offset(5)
+            make.right.equalTo(btnGoToLilles.snp.left).offset(-40)
         }
         btnGoToLilles.snp.makeConstraints { (make) in
             make.height.width.equalTo(40)
-            make.centerY.equalTo(btnGoToHome.snp.centerY)
-            make.left.equalTo(btnGoToMagnifyingGlass.snp.right).offset(15)
+            make.centerX.equalTo(FooterInSection.snp.centerX)
+            make.top.equalTo(FooterInSection.snp.top).offset(5)
         }
         btnGotoShop.snp.makeConstraints { (make) in
             make.height.width.equalTo(40)
-            make.centerY.equalTo(btnGoToHome.snp.centerY)
-            make.left.equalTo(btnGoToLilles.snp.right).offset(15)
+            make.top.equalTo(btnGoToHome.snp.top).offset(5)
+            make.left.equalTo(btnGoToLilles.snp.right).offset(40)
         }
         FooterInSection.addSubview(myProfile)
         myProfile.snp.makeConstraints { (make) in
-            make.centerY.equalTo(btnGoToHome.snp.centerY)
-            make.left.equalTo(btnGotoShop.snp.right).offset(15)
+            make.top.equalTo(btnGoToHome.snp.top).offset(5)
+            make.width.height.equalTo(35)
+            make.right.equalTo(FooterInSection.snp.right).offset(-20)
         }
     return FooterInSection
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 50
+        return 80
     }
 }
 
