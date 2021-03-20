@@ -9,8 +9,10 @@ import UIKit
 import SnapKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     let userName = ["eofjh_123", "hfdkl_.das", "ahsdk12jdl__", "iue9u2", "ndc._.ew", "ehq2312"]
     let userPictureName = ["만리장성.jpg","베이징.jpg","병마.jpg","중국 운남산.jpg","판다.jpg","shop.jpg"]
+    
     let myProfile: UIButton = {
         let btn = UIButton()
         btn.backgroundColor = .cyan
@@ -18,6 +20,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         btn.layer.cornerRadius = 20
         return btn
     }()
+    
+    let myStoryView: UIView = {
+        let storyView = UIView()
+        storyView.backgroundColor = .blue
+        return storyView
+    }()
+    
     let myTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .white
@@ -42,6 +51,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             make.width.height.equalToSuperview()
             make.top.equalToSuperview().offset(50)
         }
+        
         myTableView.register(instagramContentCell.self, forCellReuseIdentifier: "Cell")
     }
     
@@ -49,12 +59,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return userName.count
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
-    }
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let HeaderStoryVew: UIView = {
+        let HeaderTitleView: UIView = {
             let view = UIView()
             view.backgroundColor = .white
             return view
@@ -79,47 +85,103 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             btn.setImage(UIImage(named: "Message.png"), for: .normal)
             return btn
         }()
-    
-        HeaderStoryVew.addSubview(btnInstagram)
-        HeaderStoryVew.addSubview(btnUploadStory)
-        HeaderStoryVew.addSubview(btnCheckFeed)
-        HeaderStoryVew.addSubview(btnSendMessage)
-        
+
+        HeaderTitleView.addSubview(btnInstagram)
+        HeaderTitleView.addSubview(btnUploadStory)
+        HeaderTitleView.addSubview(btnCheckFeed)
+        HeaderTitleView.addSubview(btnSendMessage)
+
         btnInstagram.snp.makeConstraints { (make) in
             make.width.equalTo(140)
             make.height.equalTo(40)
-            make.centerY.equalTo(HeaderStoryVew.snp.centerY)
-            make.left.equalTo(HeaderStoryVew.snp.left).offset(10)
+            make.centerY.equalTo(HeaderTitleView.snp.centerY)
+            make.left.equalTo(HeaderTitleView.snp.left).offset(10)
         }
         btnUploadStory.snp.makeConstraints { (make) in
             make.width.equalTo(35)
             make.height.equalTo(35)
-            make.centerY.equalTo(HeaderStoryVew.snp.centerY).offset(-1)
+            make.centerY.equalTo(HeaderTitleView.snp.centerY).offset(-1)
             make.right.equalTo(btnCheckFeed.snp.left).offset(-20)
         }
         btnCheckFeed.snp.makeConstraints { (make) in
             make.width.equalTo(35)
             make.height.equalTo(35)
-            make.centerY.equalTo(HeaderStoryVew.snp.centerY)
+            make.centerY.equalTo(HeaderTitleView.snp.centerY)
             make.right.equalTo(btnSendMessage.snp.left).offset(-15)
         }
         btnSendMessage.snp.makeConstraints { (make) in
             make.width.equalTo(33)
             make.height.equalTo(33)
-            make.centerY.equalTo(HeaderStoryVew.snp.centerY).offset(-2)
-            make.right.equalTo(HeaderStoryVew.snp.right).offset(-20)
+            make.centerY.equalTo(HeaderTitleView.snp.centerY).offset(-2)
+            make.right.equalTo(HeaderTitleView.snp.right).offset(-20)
         }
-        return HeaderStoryVew
+    return HeaderTitleView
+//        let HeaderStoryView: UIView = {
+//        let view = UIView()
+//        view.backgroundColor = .blue
+//        return view
+//        }()
+//
+//        return HeaderStoryView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! instagramContentCell
+        
+        let storyCell: UIView = {
+            let view = UIView()
+            view.backgroundColor = .green
+            return view
+        }()
+        tableView.addSubview(storyCell)
+        
+        storyCell.snp.makeConstraints { (make) in
+            make.top.equalTo(tableView.snp.bottom)
+            make.width.equalToSuperview()
+            make.height.equalTo(100)
+        }
+        storyCellContent()
+        
         cell.backgroundColor = .white
         cell.NameCell.text = userName[indexPath.row]
         cell.pictureCell.image = UIImage(named: userPictureName[indexPath.row])
         
         return cell
     }
+    
+    func storyCellContent() {
+//        flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal
+        let storyName = ["qwe21", "dfads3", "dfad3", "jfghj3", "fhda2"]
+        let storyPicture = ["베이징.jpg","병마.jpg","중국 운남산.jpg","판다.jpg","shop.jpg"]
+        
+        let storyView: UIView = {
+            let view = UIView()
+            return view
+        }()
+        let storyCell: UIButton = {
+            let btn = UIButton()
+            btn.setImage(UIImage(named: "베이징.jpg"), for: .normal)
+            return btn
+        }()
+        let storyTitle: UILabel = {
+            let txt = UILabel()
+            return txt
+        }()
+        view.addSubview(storyView)
+        storyView.addSubview(storyCell)
+        storyView.addSubview(storyTitle)
+        
+        storyCell.snp.makeConstraints { (make) in
+            make.width.height.equalTo(50)
+            make.top.equalTo(storyView.snp.top)
+        }
+        storyCell.setImage(UIImage(named: storyPicture[0]), for: .normal)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 700
 //        UITableViewAutomatic 알아보기 self sizing
@@ -189,7 +251,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return 80
     }
 }
-
 
 class instagramContentCell: UITableViewCell {
     
