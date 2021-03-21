@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     
     let userName = ["eofjh_123", "hfdkl_.das", "ahsdk12jdl__", "iue9u2", "ndc._.ew", "ehq2312"]
     let userPictureName = ["만리장성.jpg","베이징.jpg","병마.jpg","중국 운남산.jpg","판다.jpg","shop.jpg"]
@@ -20,11 +20,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         btn.layer.cornerRadius = 20
         return btn
     }()
-    
-    let myTableView: UITableView = {
+    lazy var myCollectionView: UICollectionView = {
+       let layout = UICollectionViewFlowLayout()
+       let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+       layout.scrollDirection = .horizontal
+       layout.minimumLineSpacing = 4
+       view.delegate = self
+       view.dataSource = self
+       view.register(UICollectionView.self, forCellWithReuseIdentifier: "Cell")
+       view.backgroundColor = .cyan
+       view.snp.makeConstraints { (make) in
+        make.top.bottom.equalToSuperview()
+        make.height.width.equalToSuperview()
+       }
+       return view
+    }()
+        
+    lazy var myTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .white
         tableView.separatorColor = .white
+        tableView.tableHeaderView = myCollectionView
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.delegate = self
+        tableView.dataSource = self
         return tableView
     }()
     
@@ -36,98 +55,106 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func setupTableView() {
-        myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "storyCell")
-        myTableView.delegate = self
-        myTableView.dataSource = self
         self.view.addSubview(myTableView)
-        
         myTableView.snp.makeConstraints { (make) in
             make.width.height.equalToSuperview()
             make.top.equalToSuperview().offset(50)
         }
-        
         myTableView.register(instagramContentCell.self, forCellReuseIdentifier: "Cell")
-        myTableView.register(storyContentCell.self, forCellReuseIdentifier: "storyCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userName.count
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let HeaderTitleView: UIView = {
-            let view = UIView()
-            view.backgroundColor = .white
-            return view
-        }()
-        let btnInstagram: UIButton = {
-            let btn = UIButton()
-            btn.setImage(UIImage(named: "InstagramLogo.png"), for: .normal)
-            return btn
-        }()
-        let btnUploadStory: UIButton = {
-            let btn = UIButton()
-            btn.setImage(UIImage(named: "camera.png"), for: .normal)
-            return btn
-        }()
-        let btnCheckFeed: UIButton = {
-            let btn = UIButton()
-            btn.setImage(UIImage(named: "heartUpdate.png"), for: .normal)
-            return btn
-        }()
-        let btnSendMessage: UIButton = {
-            let btn = UIButton()
-            btn.setImage(UIImage(named: "Message.png"), for: .normal)
-            return btn
-        }()
-
-        HeaderTitleView.addSubview(btnInstagram)
-        HeaderTitleView.addSubview(btnUploadStory)
-        HeaderTitleView.addSubview(btnCheckFeed)
-        HeaderTitleView.addSubview(btnSendMessage)
-
-        btnInstagram.snp.makeConstraints { (make) in
-            make.width.equalTo(140)
-            make.height.equalTo(40)
-            make.centerY.equalTo(HeaderTitleView.snp.centerY)
-            make.left.equalTo(HeaderTitleView.snp.left).offset(10)
-        }
-        btnUploadStory.snp.makeConstraints { (make) in
-            make.width.equalTo(35)
-            make.height.equalTo(35)
-            make.centerY.equalTo(HeaderTitleView.snp.centerY).offset(-1)
-            make.right.equalTo(btnCheckFeed.snp.left).offset(-20)
-        }
-        btnCheckFeed.snp.makeConstraints { (make) in
-            make.width.equalTo(35)
-            make.height.equalTo(35)
-            make.centerY.equalTo(HeaderTitleView.snp.centerY)
-            make.right.equalTo(btnSendMessage.snp.left).offset(-15)
-        }
-        btnSendMessage.snp.makeConstraints { (make) in
-            make.width.equalTo(33)
-            make.height.equalTo(33)
-            make.centerY.equalTo(HeaderTitleView.snp.centerY).offset(-2)
-            make.right.equalTo(HeaderTitleView.snp.right).offset(-20)
-        }
-    return HeaderTitleView
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 20
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let StoryCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        
+        let btnStory1 : UIButton = {
+            let btn = UIButton()
+            btn.backgroundColor = .blue
+            btn.layer.cornerRadius = 30
+            btn.snp.makeConstraints { (make) in
+                make.width.equalTo(60)
+            }
+            return btn
+        }()
+        
+        StoryCell.contentView.backgroundColor = .systemTeal
+        StoryCell.addSubview(btnStory1)
+        
+        return StoryCell
     }
+    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let HeaderTitleView: UIView = {
+//            let view = UIView()
+//            view.backgroundColor = .white
+//            return view
+//        }()
+//        let btnInstagram: UIButton = {
+//            let btn = UIButton()
+//            btn.setImage(UIImage(named: "InstagramLogo.png"), for: .normal)
+//            return btn
+//        }()
+//        let btnUploadStory: UIButton = {
+//            let btn = UIButton()
+//            btn.setImage(UIImage(named: "camera.png"), for: .normal)
+//            return btn
+//        }()
+//        let btnCheckFeed: UIButton = {
+//            let btn = UIButton()
+//            btn.setImage(UIImage(named: "heartUpdate.png"), for: .normal)
+//            return btn
+//        }()
+//        let btnSendMessage: UIButton = {
+//            let btn = UIButton()
+//            btn.setImage(UIImage(named: "Message.png"), for: .normal)
+//            return btn
+//        }()
+//
+//        HeaderTitleView.addSubview(btnInstagram)
+//        HeaderTitleView.addSubview(btnUploadStory)
+//        HeaderTitleView.addSubview(btnCheckFeed)
+//        HeaderTitleView.addSubview(btnSendMessage)
+//
+//        btnInstagram.snp.makeConstraints { (make) in
+//            make.width.equalTo(140)
+//            make.height.equalTo(40)
+//            make.centerY.equalTo(HeaderTitleView.snp.centerY)
+//            make.left.equalTo(HeaderTitleView.snp.left).offset(10)
+//        }
+//        btnUploadStory.snp.makeConstraints { (make) in
+//            make.width.equalTo(35)
+//            make.height.equalTo(35)
+//            make.centerY.equalTo(HeaderTitleView.snp.centerY).offset(-1)
+//            make.right.equalTo(btnCheckFeed.snp.left).offset(-20)
+//        }
+//        btnCheckFeed.snp.makeConstraints { (make) in
+//            make.width.equalTo(35)
+//            make.height.equalTo(35)
+//            make.centerY.equalTo(HeaderTitleView.snp.centerY)
+//            make.right.equalTo(btnSendMessage.snp.left).offset(-15)
+//        }
+//        btnSendMessage.snp.makeConstraints { (make) in
+//            make.width.equalTo(33)
+//            make.height.equalTo(33)
+//            make.centerY.equalTo(HeaderTitleView.snp.centerY).offset(-2)
+//            make.right.equalTo(HeaderTitleView.snp.right).offset(-20)
+//        }
+//    return HeaderTitleView
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 60
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! instagramContentCell
-        let storyCell = tableView.dequeueReusableCell(withIdentifier: "storyCell") as! storyContentCell
-        
-        storyCell.snp.makeConstraints { (make) in
-            make.top.equalTo(myTableView.snp.top)
-        }
-        cell.snp.makeConstraints { (make) in
-            make.top.equalTo(storyCell.snp.bottom)
-        }
         
         cell.backgroundColor = .white
         cell.NameCell.text = userName[indexPath.row]
@@ -205,44 +232,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return 80
     }
 }
-
-class storyContentCell: UITableViewCell {
-    let storyView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .gray
-        return view
-    }()
-    let storyCell: UIButton = {
-        let btn = UIButton()
-        btn.backgroundColor = .black
-        btn.layer.cornerRadius = 30
-        return btn
-    }()
-    
-    override init(style: UITableViewCell.CellStyle , reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        superStoryCellView()
-    }
-    
-    
-    func superStoryCellView() {
-        addSubview(storyView)
-        storyView.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
-            make.height.equalTo(100)
-        }
-        storyView.addSubview(storyCell)
-        storyCell.snp.makeConstraints { (make) in
-            make.width.height.equalTo(60)
-            make.top.equalToSuperview()
-        }
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
+//class storyContentCell: UICollectionView {
+//    let storyView: UIView = {
+//        let view = UIView()
+//        view.backgroundColor = .black
+//        return view
+//    }()
+//
+//}
 
 class instagramContentCell: UITableViewCell {
     
