@@ -21,12 +21,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return btn
     }()
     
-    let myStoryView: UIView = {
-        let storyView = UIView()
-        storyView.backgroundColor = .blue
-        return storyView
-    }()
-    
     let myTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .white
@@ -43,6 +37,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func setupTableView() {
         myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "storyCell")
         myTableView.delegate = self
         myTableView.dataSource = self
         self.view.addSubview(myTableView)
@@ -53,6 +48,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
         myTableView.register(instagramContentCell.self, forCellReuseIdentifier: "Cell")
+        myTableView.register(storyContentCell.self, forCellReuseIdentifier: "storyCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -116,13 +112,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             make.right.equalTo(HeaderTitleView.snp.right).offset(-20)
         }
     return HeaderTitleView
-//        let HeaderStoryView: UIView = {
-//        let view = UIView()
-//        view.backgroundColor = .blue
-//        return view
-//        }()
-//
-//        return HeaderStoryView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -131,55 +120,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! instagramContentCell
-        
-        let storyCell: UIView = {
-            let view = UIView()
-            view.backgroundColor = .green
-            return view
-        }()
-        tableView.addSubview(storyCell)
+        let storyCell = tableView.dequeueReusableCell(withIdentifier: "storyCell") as! storyContentCell
         
         storyCell.snp.makeConstraints { (make) in
-            make.top.equalTo(tableView.snp.bottom)
-            make.width.equalToSuperview()
-            make.height.equalTo(100)
+            make.top.equalTo(myTableView.snp.top)
         }
-        storyCellContent()
+        cell.snp.makeConstraints { (make) in
+            make.top.equalTo(storyCell.snp.bottom)
+        }
         
         cell.backgroundColor = .white
         cell.NameCell.text = userName[indexPath.row]
         cell.pictureCell.image = UIImage(named: userPictureName[indexPath.row])
         
         return cell
-    }
-    
-    func storyCellContent() {
-//        flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal
-        let storyName = ["qwe21", "dfads3", "dfad3", "jfghj3", "fhda2"]
-        let storyPicture = ["베이징.jpg","병마.jpg","중국 운남산.jpg","판다.jpg","shop.jpg"]
-        
-        let storyView: UIView = {
-            let view = UIView()
-            return view
-        }()
-        let storyCell: UIButton = {
-            let btn = UIButton()
-            btn.setImage(UIImage(named: "베이징.jpg"), for: .normal)
-            return btn
-        }()
-        let storyTitle: UILabel = {
-            let txt = UILabel()
-            return txt
-        }()
-        view.addSubview(storyView)
-        storyView.addSubview(storyCell)
-        storyView.addSubview(storyTitle)
-        
-        storyCell.snp.makeConstraints { (make) in
-            make.width.height.equalTo(50)
-            make.top.equalTo(storyView.snp.top)
-        }
-        storyCell.setImage(UIImage(named: storyPicture[0]), for: .normal)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -249,6 +203,44 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 80
+    }
+}
+
+class storyContentCell: UITableViewCell {
+    let storyView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .gray
+        return view
+    }()
+    let storyCell: UIButton = {
+        let btn = UIButton()
+        btn.backgroundColor = .black
+        btn.layer.cornerRadius = 30
+        return btn
+    }()
+    
+    override init(style: UITableViewCell.CellStyle , reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        superStoryCellView()
+    }
+    
+    
+    func superStoryCellView() {
+        addSubview(storyView)
+        storyView.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalTo(100)
+        }
+        storyView.addSubview(storyCell)
+        storyCell.snp.makeConstraints { (make) in
+            make.width.height.equalTo(60)
+            make.top.equalToSuperview()
+        }
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
