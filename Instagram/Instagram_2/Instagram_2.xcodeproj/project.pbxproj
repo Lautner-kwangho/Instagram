@@ -37,6 +37,7 @@
 		E4545506260120E800332472 /* 중국 운남산.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E45454EE260120E800332472 /* 중국 운남산.jpg */; };
 		E4545507260120E800332472 /* blackPerson.png in Resources */ = {isa = PBXBuildFile; fileRef = E45454EF260120E800332472 /* blackPerson.png */; };
 		E4545508260120E800332472 /* blackHeart.png in Resources */ = {isa = PBXBuildFile; fileRef = E45454F0260120E800332472 /* blackHeart.png */; };
+		E45A569B2607B09B00646C77 /* DmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45A569A2607B09B00646C77 /* DmViewController.swift */; };
 		E471602125FDAEE0009A7123 /* instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = E471601825FDAEE0009A7123 /* instagram.png */; };
 		E471602225FDAEE0009A7123 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = E471601925FDAEE0009A7123 /* comment.png */; };
 		E471602325FDAEE0009A7123 /* InstagramLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E471601A25FDAEE0009A7123 /* InstagramLogo.png */; };
@@ -86,6 +87,7 @@
 		E45454EE260120E800332472 /* 중국 운남산.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "중국 운남산.jpg"; sourceTree = "<group>"; };
 		E45454EF260120E800332472 /* blackPerson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackPerson.png; sourceTree = "<group>"; };
 		E45454F0260120E800332472 /* blackHeart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackHeart.png; sourceTree = "<group>"; };
+		E45A569A2607B09B00646C77 /* DmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DmViewController.swift; sourceTree = "<group>"; };
 		E471601825FDAEE0009A7123 /* instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instagram.png; sourceTree = "<group>"; };
 		E471601925FDAEE0009A7123 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
 		E471601A25FDAEE0009A7123 /* InstagramLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InstagramLogo.png; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				E43FD20325FDAA3100CBF2FB /* AppDelegate.swift */,
 				E43FD20525FDAA3100CBF2FB /* SceneDelegate.swift */,
 				E43FD20725FDAA3100CBF2FB /* ViewController.swift */,
+				E45A569A2607B09B00646C77 /* DmViewController.swift */,
 				E43FD20925FDAA3100CBF2FB /* Main.storyboard */,
 				E43FD20C25FDAA3100CBF2FB /* Assets.xcassets */,
 				E43FD20E25FDAA3100CBF2FB /* LaunchScreen.storyboard */,
@@ -354,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E43FD20825FDAA3100CBF2FB /* ViewController.swift in Sources */,
+				E45A569B2607B09B00646C77 /* DmViewController.swift in Sources */,
 				E43FD20425FDAA3100CBF2FB /* AppDelegate.swift in Sources */,
 				E43FD20625FDAA3100CBF2FB /* SceneDelegate.swift in Sources */,
 			);

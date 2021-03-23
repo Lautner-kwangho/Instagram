@@ -97,9 +97,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let btnSendMessage: UIButton = {
             let btn = UIButton()
             btn.setImage(UIImage(named: "Message.png"), for: .normal)
+            btn.addTarget(self, action: #selector(SendMessage), for: .touchUpInside)
             return btn
         }()
-
+        
         HeaderTitleView.addSubview(btnInstagram)
         HeaderTitleView.addSubview(btnUploadStory)
         HeaderTitleView.addSubview(btnCheckFeed)
@@ -130,6 +131,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             make.right.equalTo(HeaderTitleView.snp.right).offset(-20)
         }
     return HeaderTitleView
+    }
+    
+    @objc func SendMessage() {
+        let vc = DmViewController()
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc,animated: true)
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
