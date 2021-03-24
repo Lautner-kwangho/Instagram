@@ -27,58 +27,10 @@
             filePath = "Instagram_2/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "361"
-            endingLineNumber = "361"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "btnCellContent()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B7839065-2C6A-4BFF-85BF-482C7F2C54A4"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Instagram_2/ViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "tableView(_:viewForHeaderInSection:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "B7839065-2C6A-4BFF-85BF-482C7F2C54A4 - 8d576029ed20579b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Instagram_2.ViewController.tableView(_: __C.UITableView, viewForHeaderInSection: Swift.Int) -&gt; Swift.Optional&lt;__C.UIView&gt;"
-                  moduleName = "Instagram_2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/choikwangho/Instagram/Instagram/Instagram_2/Instagram_2/ViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "50"
-                  endingLineNumber = "50"
-                  offsetFromSymbolStart = "72">
-               </Location>
-               <Location
-                  uuid = "B7839065-2C6A-4BFF-85BF-482C7F2C54A4 - 2f28515a0a86147a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; __C.UIView in Instagram_2.ViewController.tableView(_: __C.UITableView, viewForHeaderInSection: Swift.Int) -&gt; Swift.Optional&lt;__C.UIView&gt;"
-                  moduleName = "Instagram_2"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/choikwangho/Instagram/Instagram/Instagram_2/Instagram_2/ViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "51"
-                  endingLineNumber = "51"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -91,8 +43,8 @@
             filePath = "Instagram_2/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "360"
-            endingLineNumber = "360"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "btnCellContent()"
             landmarkType = "7">
             <Locations>
@@ -132,17 +84,79 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C1320442-9116-4821-8C38-4074D7AA57F6"
+            uuid = "7E82BBEF-E938-439E-BEA9-88174AE0B813"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Instagram_2/ViewController.swift"
+            filePath = "Instagram_2/AppDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
             landmarkName = "unknown"
             landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "7E82BBEF-E938-439E-BEA9-88174AE0B813 - bea821feb8b51e32"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Instagram_2.AppDelegate.__deallocating_deinit"
+                  moduleName = "Instagram_2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/choikwangho/Instagram/Instagram/Instagram_2/Instagram_2/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "7E82BBEF-E938-439E-BEA9-88174AE0B813 - 30b957e2aa64eaae"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Instagram_2.AppDelegate.__allocating_init() -&gt; Instagram_2.AppDelegate"
+                  moduleName = "Instagram_2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/choikwangho/Instagram/Instagram/Instagram_2/Instagram_2/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "8">
+               </Location>
+               <Location
+                  uuid = "7E82BBEF-E938-439E-BEA9-88174AE0B813 - 851590ea46c13ea1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Instagram_2.AppDelegate.init() -&gt; Instagram_2.AppDelegate"
+                  moduleName = "Instagram_2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/choikwangho/Instagram/Instagram/Instagram_2/Instagram_2/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "7E82BBEF-E938-439E-BEA9-88174AE0B813 - 4e254fa358000d03"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "Instagram_2"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/choikwangho/Instagram/Instagram/Instagram_2/Instagram_2/AppDelegate.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

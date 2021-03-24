@@ -10,14 +10,14 @@ import SnapKit
 
 class DmViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let DmMessageUser = ["경희", "한양", "숭실", "서울", "고대", "연대","경희", "한양", "숭실", "서울", "고대", "연대"]
+    let DmMessageUser = ["경희", "쿠니🥰", "숭실", "레오🤩", "고대", "해피🤨","경희", "한양", "숭실", "서울", "고대", "연대"]
     
     let tableView: UITableView = {
         let tv = UITableView()
-        tv.backgroundColor = .gray
+        tv.backgroundColor = .white
         return tv
     }()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTable()
@@ -26,20 +26,44 @@ class DmViewController : UIViewController, UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerInSectionView: UIView = {
             let view = UIView()
-            view.backgroundColor = .cyan
+            view.backgroundColor = .white
             return view
         }()
         let btnNewDm: UIButton = {
            let btn = UIButton()
-            btn.backgroundColor = .gray
-            btn.snp.makeConstraints { (make) in
-                make.width.equalTo(100)
-                make.height.equalTo(50)
-            }
+            btn.setImage(UIImage(named: "InstagramLogo.png"), for: .normal)
             return btn
         }()
-        
+        let btn1: UIButton = {
+            let btn = UIButton()
+            btn.setImage(UIImage(named: "personUpdate.png"), for: .normal)
+            return btn
+        }()
+        let btn2: UIButton = {
+            let btn = UIButton()
+            btn.setImage(UIImage(named: "multiUpdate.png"), for: .normal)
+            return btn
+        }()
         headerInSectionView.addSubview(btnNewDm)
+        headerInSectionView.addSubview(btn1)
+        headerInSectionView.addSubview(btn2)
+        
+        btnNewDm.snp.makeConstraints { (make) in
+            make.width.equalTo(150)
+            make.height.equalTo(50)
+            make.left.equalTo(headerInSectionView.snp.left).offset(40)
+        }
+        btn1.snp.makeConstraints { (make) in
+            make.width.height.equalTo(40)
+            make.centerY.equalTo(headerInSectionView.snp.centerY)
+            make.right.equalTo(headerInSectionView.snp.right).offset(-30)
+        }
+        btn2.snp.makeConstraints { (make) in
+            make.width.height.equalTo(40)
+            make.centerY.equalTo(headerInSectionView.snp.centerY)
+            make.right.equalTo(btn1.snp.left).offset(-20)
+        }
+        
         
         return headerInSectionView
     }
@@ -53,6 +77,7 @@ class DmViewController : UIViewController, UITableViewDelegate, UITableViewDataS
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorColor = .clear
         
         tableView.snp.makeConstraints { (make) in
             make.width.height.top.equalToSuperview()
@@ -77,13 +102,13 @@ class DmViewController : UIViewController, UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DmMessageUser.count
     }
-    
+
 }
 
 class DmCell : UITableViewCell {
     let cellView : UIView = {
         let view = UIView()
-        view.backgroundColor = .orange
+        view.backgroundColor = .white
         return view
     }()
     let DmPicture : UIView = {
@@ -95,8 +120,8 @@ class DmCell : UITableViewCell {
     let DmLabel : UILabel = {
         let label = UILabel()
         label.text = "Name 1"
-        label.textColor = .white
-        label.font = UIFont.boldSystemFont(ofSize: 40)
+        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 30)
         return label
     }()
     let DmContent : UILabel = {
@@ -126,7 +151,7 @@ class DmCell : UITableViewCell {
         
         cellView.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
-            make.height.equalTo(70)
+            make.height.equalTo(80)
             make.top.equalToSuperview()
         }
         DmPicture.snp.makeConstraints { (make) in
