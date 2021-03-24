@@ -16,6 +16,14 @@ class ViewController: UIViewController {
         return lbl
     }()
     
+    private let btnLogin : UIButton = {
+        let btn = UIButton()
+        btn.setTitle("로그인하기", for: .normal)
+        btn.backgroundColor = .systemOrange
+        btn.addTarget(self, action: #selector(ClickLogin), for: .touchUpInside)
+        return btn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -23,11 +31,17 @@ class ViewController: UIViewController {
         Login.snp.makeConstraints { (make) in
             make.centerX.centerY.equalToSuperview()
         }
+        view.addSubview(btnLogin)
+        btnLogin.snp.makeConstraints { (make) in
+            make.width.equalTo(100)
+            make.height.equalTo(50)
+            make.top.equalTo(Login.snp.bottom).offset(10)
+            make.centerX.equalTo(Login.snp.centerX)
+        }
         view.backgroundColor = .white
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    @objc private func ClickLogin() {
         let TabBar = UITabBarController()
         
         let vc1 = FirstViewController()
@@ -452,15 +466,69 @@ class FirstViewController:UIViewController, UITableViewDelegate, UITableViewData
 }
 
 class SecondViewController: UIViewController {
+    let TestView : UIView = {
+        let view = UIView()
+        view.backgroundColor = .gray
+        return view
+    }()
+
+    let btnTest : UIButton = {
+       let btn = UIButton()
+        btn.backgroundColor = .red
+        btn.setTitle("눌러", for: .normal)
+        btn.addTarget(self, action: #selector(didTapView), for: .touchUpInside)
+        return btn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .gray
+        view.addSubview(TestView)
+        TestView.backgroundColor = .gray
+        TestView.snp.makeConstraints { (make) in
+            make.width.equalTo(self.view.snp.width)
+            make.height.equalTo((self.view.snp.height))
+        }
+
+        view.addSubview(btnTest)
+        btnTest.snp.makeConstraints { (make) in
+            make.width.height.equalTo(100)
+            make.centerY.centerX.equalToSuperview()
+        }
+    }
+
+    @objc private func didTapView() {
+        let Test = ThirdViewController()
+        let Navvc = UINavigationController(rootViewController: Test)
+        Test.title = "되냐?"
+        Navvc.modalPresentationStyle = .fullScreen
+        present(Navvc, animated: true)
     }
 }
+    
 class ThirdViewController: UIViewController {
+    private let button = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .orange
+        
+        button.setTitle("테스트로 이동", for: .normal)
+        view.addSubview(button)
+        button.backgroundColor = .white
+        button.setTitleColor(.blue, for: .normal)
+        button.frame = CGRect(x: 100, y: 100, width: 200, height: 52)
+        button.addTarget(self, action: #selector(gotoTest), for: .touchUpInside)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dismiss", style: .plain, target: self, action: #selector(TTTT))
+    }
+    
+    @objc func gotoTest() {
+        let TtestVC = TestViewController()
+        navigationController?.pushViewController(TtestVC, animated: true)
+    }
+    
+    @objc private func TTTT() {
+        dismiss(animated: true, completion: nil)
     }
 }
 class FourthViewController: UIViewController {
@@ -470,37 +538,46 @@ class FourthViewController: UIViewController {
     }
 }
 class FifthViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = .gray
     }
+
 }
 
+class TestViewController : UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .systemGray3
+    }
+    
+}
 
 #if DEBUG
 
 import SwiftUI
-struct FirstViewControllerRepresentable: UIViewControllerRepresentable {
+struct ViewControllerRepresentable: UIViewControllerRepresentable {
     
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
         // leave this empty
     }
     @available( ios 14.0.0, *)
     func makeUIViewController(context: Context) -> UIViewController {
-        FirstViewController()
-        return FirstViewController()
+        FifthViewController()
+        return FifthViewController()
     }
 }
     @ available( ios 14.0, *)
     struct FirstViewControllerRepresentable_PreviewProvider: PreviewProvider {
         static var previews: some View {
             Group {
-                FirstViewControllerRepresentable()
+                ViewControllerRepresentable()
                     .ignoresSafeArea()
                     .previewDisplayName("Praview")
                     .previewDevice(PreviewDevice(rawValue: "iphone 11"))
             }
         }
-    }
-#endif
+    } #endif
 

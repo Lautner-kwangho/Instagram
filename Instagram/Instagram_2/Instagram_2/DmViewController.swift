@@ -135,6 +135,7 @@ class DmCell : UITableViewCell {
         btn.setImage(UIImage(named: "camera.png"), for: .normal)
         return btn
     }()
+
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -180,6 +181,14 @@ class DmCell : UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class GoToDmMessage : UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .green
+        title = " 만드는 중이에요 ㅠㅠ"
     }
 }
 
