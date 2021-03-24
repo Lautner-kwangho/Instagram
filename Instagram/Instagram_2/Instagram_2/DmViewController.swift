@@ -11,6 +11,7 @@ import SnapKit
 class DmViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let DmMessageUser = ["경희", "쿠니🥰", "숭실", "레오🤩", "고대", "해피🤨","경희", "한양", "숭실", "서울", "고대", "연대"]
+    var DmPictureColor = [UIColor.red, UIColor.blue, UIColor.cyan, UIColor.black, UIColor.orange, UIColor.yellow, UIColor.red, UIColor.gray, UIColor.systemPink, UIColor.systemGreen, UIColor.blue, UIColor.cyan]
     
     let tableView: UITableView = {
         let tv = UITableView()
@@ -21,6 +22,13 @@ class DmViewController : UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTable()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "InstagramLogo.png"), style: .plain, target: self, action: #selector(disMiss))
+        navigationController?.navigationBar.tintColor = .red
+    }
+    
+    @objc private func disMiss() {
+        dismiss(animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -63,9 +71,14 @@ class DmViewController : UIViewController, UITableViewDelegate, UITableViewDataS
             make.centerY.equalTo(headerInSectionView.snp.centerY)
             make.right.equalTo(btn1.snp.left).offset(-20)
         }
-        
+        btn2.addTarget(self, action: #selector(GoToDm), for: .touchUpInside)
         
         return headerInSectionView
+    }
+    
+    @objc private func GoToDm() {
+        let DmVC = GoToDmMessageViewController()
+        navigationController?.pushViewController(DmVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -90,8 +103,8 @@ class DmViewController : UIViewController, UITableViewDelegate, UITableViewDataS
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! DmCell
         
         cell.backgroundColor = .lightGray
+        cell.DmPicture.backgroundColor = DmPictureColor[indexPath.row]
         cell.DmLabel.text = DmMessageUser[indexPath.row]
-        
         return cell
     }
     
@@ -114,14 +127,14 @@ class DmCell : UITableViewCell {
     let DmPicture : UIView = {
        let view = UIView()
         view.backgroundColor = .black
-        view.layer.cornerRadius = 30
+        view.layer.cornerRadius = 25
         return view
     }()
     let DmLabel : UILabel = {
         let label = UILabel()
         label.text = "Name 1"
         label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 30)
+        label.font = UIFont.boldSystemFont(ofSize: 25)
         return label
     }()
     let DmContent : UILabel = {
@@ -156,25 +169,25 @@ class DmCell : UITableViewCell {
             make.top.equalToSuperview()
         }
         DmPicture.snp.makeConstraints { (make) in
-            make.width.height.equalTo(60)
-            make.top.equalTo(cellView.snp.top).offset(5)
+            make.width.height.equalTo(50)
+            make.top.equalTo(cellView.snp.top).offset(10)
             make.left.equalTo(cellView.snp.left).offset(15)
         }
         DmLabel.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
-            make.height.equalTo(35)
-            make.top.equalTo(cellView.snp.top).offset(5)
+            make.height.equalTo(30)
+            make.top.equalTo(cellView.snp.top).offset(10)
             make.left.equalTo(DmPicture.snp.right).offset(10)
         }
         DmContent.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
-            make.height.equalTo(35)
+            make.height.equalTo(30)
             make.top.equalTo(DmLabel.snp.bottom)
             make.left.equalTo(DmLabel.snp.left)
         }
         DmCamera.snp.makeConstraints { (make) in
-            make.width.height.equalTo(35)
-            make.centerY.equalTo(cellView.snp.centerY)
+            make.width.height.equalTo(30)
+            make.centerY.equalTo(DmPicture.snp.centerY)
             make.right.equalTo(cellView.snp.right).offset(-15)
         }
     }
@@ -184,12 +197,14 @@ class DmCell : UITableViewCell {
     }
 }
 
-class GoToDmMessage : UIViewController {
+class GoToDmMessageViewController : UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .green
         title = " 만드는 중이에요 ㅠㅠ"
     }
+    
 }
 
 #if DEBUG

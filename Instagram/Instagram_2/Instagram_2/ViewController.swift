@@ -414,9 +414,14 @@ class FirstViewController:UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @objc private func SendMessage() {
-        let vc = DmViewController()
-        vc.modalPresentationStyle = .automatic
-        present(vc, animated: true)
+//        let vc = DmViewController()
+//        vc.modalPresentationStyle = .automatic
+//        present(vc, animated: true)
+//
+        let VC = DmViewController()
+        let NavVC = UINavigationController(rootViewController: VC)
+        NavVC.modalPresentationStyle = .fullScreen
+        present(NavVC, animated: true)
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -537,13 +542,47 @@ class FourthViewController: UIViewController {
         view.backgroundColor = .black
     }
 }
-class FifthViewController: UIViewController {
+class FifthViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    struct customData {
+        var title: String
+        var url: String
+        var backgroundImage: UIImage
+    }
+    
+    let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let cv = UICollectionView()
+        layout.scrollDirection = .vertical
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        return cv
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .gray
+        view.addSubview(collectionView)
+        
+        collectionViewSetup()
+    }
+    
+    private func collectionViewSetup() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .white
+        collectionView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
 
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        return cell
+    }
+    
 }
 
 class TestViewController : UIViewController {
