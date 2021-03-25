@@ -542,47 +542,84 @@ class FourthViewController: UIViewController {
         view.backgroundColor = .black
     }
 }
-class FifthViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class FifthViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    struct customData {
-        var title: String
-        var url: String
-        var backgroundImage: UIImage
-    }
-    
-    let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let cv = UICollectionView()
-        layout.scrollDirection = .vertical
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        return cv
+    lazy var CollectionView: UICollectionView = {
+        let CV = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        CV.backgroundColor = .white
+        CV.delegate = self
+        CV.dataSource = self
+        CV.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: MyCollectionViewCell.identifier)
+        return CV
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(collectionView)
-        
-        collectionViewSetup()
+        setupCollectionView()
+//        setupTableView()
     }
-    
-    private func collectionViewSetup() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = .white
-        collectionView.snp.makeConstraints { (make) in
+    private func setupCollectionView() {
+        view.addSubview(CollectionView)
+        CollectionView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        
+        CollectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
+        CollectionView.register(FooterCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: FooterCollectionReusableView.identifier)
     }
-
+    // CollectionView 반복
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 3
+    }
+    // CollectionView cell 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        return 15
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCollectionViewCell.identifier, for: indexPath)
         return cell
     }
-    
+    // CollectionViewHaeder, Footer
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader{
+            guard let header = CollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as? HeaderCollectionReusableView else {
+                return UICollectionReusableView()
+            }
+//            header.configure(with: true)
+            return header
+        }
+        //Footer
+            return CollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FooterCollectionReusableView.identifier, for: indexPath)
+    }
+    // CollectionView 공백
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 3
+    }
+    // CollectionView 중간 열 개수
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    // CollectionView 중간 내용 safeMargins
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+    }
+    // CollectionView 중간 cell size
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.size.width/3-4, height: view.frame.size.width/3-4)
+    }
+    //CollectionView header 크기
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        //  반복되는 CollectionView 1 Section 크기 없애서 다음 셀 안나오게 하기
+//        if section == 1 {
+//            return .zero
+//        }
+        return CGSize(width: view.frame.size.width, height: view.frame.size.height / 2)
+    }
+    //CollectionView footer 크기
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.size.width, height: view.frame.size.width)
+    }
 }
 
 class TestViewController : UIViewController {
