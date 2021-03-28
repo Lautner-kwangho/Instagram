@@ -9,13 +9,12 @@ import UIKit
 
 class HeaderCollectionReusableView: UICollectionReusableView {
     static let identifier = "HeaderCollectionReusableView"
-    
-//    private let imageView: UIImageView = {
-//      let imageView = UIImageView(image: UIImage(named: "중국 운남산.jpg"))
-//        imageView.contentMode = .scaleAspectFill
-//        imageView.clipsToBounds = true
-//        return imageView
-//    }()
+    private let imageView: UIImageView = {
+      let imageView = UIImageView(image: UIImage(named: "중국 운남산.jpg"))
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        return imageView
+    }()
     
     private let Headview : UIView = {
        let view = UIView()
@@ -92,24 +91,12 @@ class HeaderCollectionReusableView: UICollectionReusableView {
        let btn = UIButton()
         btn.setImage(UIImage(named: "homeUpdate.png"), for: .normal)
         return btn
+
     }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        addSubview(imageView)
-        addSubview(Headview)
-        Headview.addSubview(viewSection1)
-        viewSection1.addSubview(myProfile)
-        viewSection1.addSubview(myProfileCount)
-        Headview.addSubview(viewSection2)
-        viewSection2.addSubview(myProfileContent)
-        Headview.addSubview(viewSection3)
-        viewSection3.addSubview(btnEdit)
-        viewSection3.addSubview(btnSaved)
-        Headview.addSubview(viewSection4)
-        Headview.addSubview(viewSection5)
-        viewSection5.addSubview(btnPic)
-        viewSection5.addSubview(btnTag)
-        layoutSubviews()
+        addSubview(imageView)
     }
     
     override func layoutSubviews() {
@@ -178,17 +165,44 @@ class HeaderCollectionReusableView: UICollectionReusableView {
             make.centerY.equalTo(viewSection5.snp.centerY)
             make.centerX.equalToSuperview().offset(103)
         }
-    }
 
+        imageView.frame = bounds
+    }
+    
     func configure(with showColor: Bool) {
-//        if showColor {
-//            imageView.isHidden = true
-//            backgroundColor = .systemRed
-//        }
+        if showColor {
+            imageView.isHidden = true
+            backgroundColor = .systemRed
+        }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+class FooterCollectionReusableView: UICollectionReusableView {
+    static let identifier = "FooterCollectionReusableView"
+    
+    private let imageView: UIImageView = {
+      let imageView = UIImageView(image: UIImage(named: "판다.jpg"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(imageView)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imageView.frame = bounds
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

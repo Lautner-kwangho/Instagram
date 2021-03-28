@@ -612,8 +612,12 @@ class FifthViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
         
         CollectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
+        CollectionView.register(FooterCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: FooterCollectionReusableView.identifier)
     }
-    
+    // CollectionView 반복
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 3
+    }
     // CollectionView cell 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 20
@@ -633,9 +637,8 @@ class FifthViewController: UIViewController, UICollectionViewDelegate, UICollect
             return header
         }
         //Footer
-        return UICollectionReusableView()
+            return CollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FooterCollectionReusableView.identifier, for: indexPath)
     }
-    
     // CollectionView 공백
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 3
@@ -654,7 +657,15 @@ class FifthViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     //CollectionView header 크기
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.size.width, height: view.frame.size.height / 2 - 60)
+//        //  반복되는 CollectionView 1 Section 크기 없애서 다음 셀 안나오게 하기
+//        if section == 1 {
+//            return .zero
+//        }
+        return CGSize(width: view.frame.size.width, height: view.frame.size.height / 2)
+    }
+    //CollectionView footer 크기
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.size.width, height: view.frame.size.width)
     }
 }
 
