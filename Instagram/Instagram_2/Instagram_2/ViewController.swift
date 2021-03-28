@@ -595,13 +595,20 @@ class FifthViewController: UIViewController, UICollectionViewDelegate, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-
-//        setupTableView()
     }
+
     private func setupCollectionView() {
+        view.addSubview(lblTest)
+        lblTest.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalTo(100)
+            make.top.equalTo(view.snp.top)
+        }
         view.addSubview(CollectionView)
         CollectionView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.width.equalToSuperview()
+            make.top.equalTo(lblTest.snp.bottom)
+            make.bottom.equalTo(view.snp.bottom)
         }
         
         CollectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
