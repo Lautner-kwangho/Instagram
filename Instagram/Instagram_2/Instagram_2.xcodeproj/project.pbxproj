@@ -38,6 +38,14 @@
 		E4545507260120E800332472 /* blackPerson.png in Resources */ = {isa = PBXBuildFile; fileRef = E45454EF260120E800332472 /* blackPerson.png */; };
 		E4545508260120E800332472 /* blackHeart.png in Resources */ = {isa = PBXBuildFile; fileRef = E45454F0260120E800332472 /* blackHeart.png */; };
 		E45A569B2607B09B00646C77 /* DmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45A569A2607B09B00646C77 /* DmViewController.swift */; };
+		E4666811261063CB00FA17ED /* InstagramContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4666810261063CB00FA17ED /* InstagramContentCell.swift */; };
+		E46668182610641300FA17ED /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46668172610641300FA17ED /* SecondViewController.swift */; };
+		E466681B2610643300FA17ED /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466681A2610643300FA17ED /* ThirdViewController.swift */; };
+		E466681E2610644800FA17ED /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466681D2610644800FA17ED /* FourthViewController.swift */; };
+		E46668212610645E00FA17ED /* FifthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46668202610645E00FA17ED /* FifthViewController.swift */; };
+		E4666826261064E800FA17ED /* SecondCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4666825261064E800FA17ED /* SecondCollectionViewCell.swift */; };
+		E466682A2610650200FA17ED /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46668292610650200FA17ED /* TestViewController.swift */; };
+		E466682E2610653800FA17ED /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E466682D2610653800FA17ED /* FirstViewController.swift */; };
 		E471602125FDAEE0009A7123 /* instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = E471601825FDAEE0009A7123 /* instagram.png */; };
 		E471602225FDAEE0009A7123 /* comment.png in Resources */ = {isa = PBXBuildFile; fileRef = E471601925FDAEE0009A7123 /* comment.png */; };
 		E471602325FDAEE0009A7123 /* InstagramLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E471601A25FDAEE0009A7123 /* InstagramLogo.png */; };
@@ -90,6 +98,14 @@
 		E45454EF260120E800332472 /* blackPerson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackPerson.png; sourceTree = "<group>"; };
 		E45454F0260120E800332472 /* blackHeart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackHeart.png; sourceTree = "<group>"; };
 		E45A569A2607B09B00646C77 /* DmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DmViewController.swift; sourceTree = "<group>"; };
+		E4666810261063CB00FA17ED /* InstagramContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramContentCell.swift; sourceTree = "<group>"; };
+		E46668172610641300FA17ED /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		E466681A2610643300FA17ED /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		E466681D2610644800FA17ED /* FourthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
+		E46668202610645E00FA17ED /* FifthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthViewController.swift; sourceTree = "<group>"; };
+		E4666825261064E800FA17ED /* SecondCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondCollectionViewCell.swift; sourceTree = "<group>"; };
+		E46668292610650200FA17ED /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		E466682D2610653800FA17ED /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		E471601825FDAEE0009A7123 /* instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instagram.png; sourceTree = "<group>"; };
 		E471601925FDAEE0009A7123 /* comment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comment.png; sourceTree = "<group>"; };
 		E471601A25FDAEE0009A7123 /* InstagramLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InstagramLogo.png; sourceTree = "<group>"; };
@@ -156,19 +172,43 @@
 		E43FD20225FDAA3100CBF2FB /* Instagram_2 */ = {
 			isa = PBXGroup;
 			children = (
+				E46668242610649F00FA17ED /* ViewController */,
+				E46668232610649800FA17ED /* Cell */,
 				E471602B25FDAEEE009A7123 /* Image */,
 				E43FD20325FDAA3100CBF2FB /* AppDelegate.swift */,
 				E43FD20525FDAA3100CBF2FB /* SceneDelegate.swift */,
-				E43FD20725FDAA3100CBF2FB /* ViewController.swift */,
-				E45A569A2607B09B00646C77 /* DmViewController.swift */,
 				E4FD198C260C808100F438E9 /* CollectionReusableView.swift */,
-				E4901BA4260C705600CBC69F /* myCollectionViewCell.swift */,
 				E43FD20925FDAA3100CBF2FB /* Main.storyboard */,
 				E43FD20C25FDAA3100CBF2FB /* Assets.xcassets */,
 				E43FD20E25FDAA3100CBF2FB /* LaunchScreen.storyboard */,
 				E43FD21125FDAA3100CBF2FB /* Info.plist */,
 			);
 			path = Instagram_2;
+			sourceTree = "<group>";
+		};
+		E46668232610649800FA17ED /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E4901BA4260C705600CBC69F /* myCollectionViewCell.swift */,
+				E4666810261063CB00FA17ED /* InstagramContentCell.swift */,
+				E4666825261064E800FA17ED /* SecondCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		E46668242610649F00FA17ED /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E43FD20725FDAA3100CBF2FB /* ViewController.swift */,
+				E466682D2610653800FA17ED /* FirstViewController.swift */,
+				E46668292610650200FA17ED /* TestViewController.swift */,
+				E46668172610641300FA17ED /* SecondViewController.swift */,
+				E466681A2610643300FA17ED /* ThirdViewController.swift */,
+				E466681D2610644800FA17ED /* FourthViewController.swift */,
+				E46668202610645E00FA17ED /* FifthViewController.swift */,
+				E45A569A2607B09B00646C77 /* DmViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		E471602B25FDAEEE009A7123 /* Image */ = {
@@ -362,12 +402,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E46668182610641300FA17ED /* SecondViewController.swift in Sources */,
+				E466681B2610643300FA17ED /* ThirdViewController.swift in Sources */,
 				E4901BA5260C705600CBC69F /* myCollectionViewCell.swift in Sources */,
+				E46668212610645E00FA17ED /* FifthViewController.swift in Sources */,
 				E43FD20825FDAA3100CBF2FB /* ViewController.swift in Sources */,
+				E466682A2610650200FA17ED /* TestViewController.swift in Sources */,
+				E466681E2610644800FA17ED /* FourthViewController.swift in Sources */,
 				E45A569B2607B09B00646C77 /* DmViewController.swift in Sources */,
 				E43FD20425FDAA3100CBF2FB /* AppDelegate.swift in Sources */,
+				E4666826261064E800FA17ED /* SecondCollectionViewCell.swift in Sources */,
 				E4FD198D260C808100F438E9 /* CollectionReusableView.swift in Sources */,
+				E4666811261063CB00FA17ED /* InstagramContentCell.swift in Sources */,
 				E43FD20625FDAA3100CBF2FB /* SceneDelegate.swift in Sources */,
+				E466682E2610653800FA17ED /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
