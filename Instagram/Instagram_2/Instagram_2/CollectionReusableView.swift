@@ -33,8 +33,12 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     }()
     private let myProfileCount : UIButton = {
         let btn = UIButton()
-        btn.backgroundColor = .gray
-        btn.setTitle("게시물 & 팔로워", for: .normal)
+        btn.backgroundColor = .clear
+        btn.setTitle("게시물 & 팔로워 & 팔로우 \n 121        3312      3123", for: .normal)
+        btn.titleLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        btn.titleLabel?.textAlignment = NSTextAlignment.center
+        btn.setTitleColor(.red, for: .normal)
+        btn.layer.borderWidth = 2
         return btn
     }()
     private let viewSection2 : UIView = {
@@ -43,8 +47,9 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     }()
     private let myProfileContent : UILabel = {
         let view = UILabel()
-        view.text = " test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test "
-        view.numberOfLines = 40
+        view.backgroundColor = .clear
+        view.text = " test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test "
+        view.numberOfLines = 5
         return view
     }()
     private let viewSection3 : UIView = {
@@ -117,7 +122,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
             make.top.equalTo(Headview.snp.top)
         }
         myProfile.snp.makeConstraints { (make) in
-            make.width.height.equalTo(120)
+            make.width.height.equalTo(100)
             make.centerY.equalTo(viewSection1.snp.centerY)
             make.left.equalTo(viewSection1.snp.left).offset(10)
         }
