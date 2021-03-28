@@ -66,7 +66,7 @@ class ViewController: UIViewController {
         let images = ["house", "bell", "person.circle", "star", "gear"]
         
         for x in 0 ..< items.count {
-            items[x].badgeValue = "1"
+            items[1].badgeValue = "1"
             items[x].image = UIImage(systemName: images[x])
         }
         
@@ -74,219 +74,6 @@ class ViewController: UIViewController {
     }
 }
 
-class instagramContentCell: UITableViewCell {
-    
-    let cellView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        return view
-    }()
-    
-    let NameCell: UILabel = {
-       let label = UILabel()
-        label.text = "userName"
-        label.textColor = .black
-        label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.backgroundColor = .white
-        return label
-    }()
-    let pictureCell: UIImageView = {
-        var Image = UIImageView()
-        Image.backgroundColor = .white
-        Image.image = UIImage(named: "tiger.jpg")
-//        Image.contentMode = .scaleAspectFit
-        return Image
-    }()
-    let btnCell: UIView = {
-        var btn = UIView()
-        btn.backgroundColor = .white
-        return btn
-    }()
-    let commentCell: UIView = {
-        var btn = UIView()
-        btn.backgroundColor = .white
-        return btn
-    }()
-    let timeCell: UILabel = {
-        let view = UILabel()
-        view.backgroundColor = .white
-        return view
-    }()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        superCellView()
-    }
-    
-    func superCellView() {
-        addSubview(cellView)
-        cellView.snp.makeConstraints { (make) in
-            make.width.height.equalToSuperview()
-            make.top.equalToSuperview().offset(80)
-        }
-        cellView.addSubview(NameCell)
-        NameCell.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
-            make.height.equalTo(50)
-            make.top.equalTo(cellView.snp.top)
-            make.left.equalTo(cellView.snp.left).offset(10)
-        }
-        cellView.addSubview(pictureCell)
-        pictureCell.snp.makeConstraints { (make) in
-            make.top.equalTo(NameCell.snp.bottom)
-            make.width.equalToSuperview()
-            make.height.equalTo(450)
-        }
-        cellView.addSubview(btnCell)
-        btnCellContent()
-        btnCell.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
-            make.height.equalTo(50)
-            make.top.equalTo(pictureCell.snp.bottom)
-        }
-        cellView.addSubview(commentCell)
-        commentCellContent()
-        commentCell.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
-            make.height.equalTo(130)
-            make.top.equalTo(btnCell.snp.bottom)
-        }
-        cellView.addSubview(timeCell)
-        timeCellText()
-        timeCell.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
-            make.height.equalTo(20)
-            make.top.equalTo(commentCell.snp.bottom)
-        }
-        
-    }
-    
-    func btnCellContent() {
-        let btnheart: UIButton = {
-            let btn = UIButton()
-            btn.setImage(UIImage(named: "heart.png"), for: .normal)
-            return btn
-        }()
-        let btnComment: UIButton = {
-            let btn = UIButton()
-            btn.setImage(UIImage(named: "comment.png"), for: .normal)
-            return btn
-        }()
-        let btnMessage: UIButton = {
-            let btn = UIButton()
-            btn.setImage(UIImage(named: "Message.png"), for: .normal)
-            return btn
-        }()
-        let btnSave: UIButton = {
-            let btn = UIButton()
-            btn.setImage(UIImage(named: "save.png"), for: .normal)
-            return btn
-        }()
-        btnCell.addSubview(btnheart)
-        btnheart.snp.makeConstraints { (make) in
-            make.height.equalTo(30)
-            make.width.equalTo(30)
-            make.centerY.equalTo(btnCell.snp.centerY)
-            make.left.equalTo(btnCell.snp.left).offset(10)
-        }
-        btnCell.addSubview(btnComment)
-        btnComment.snp.makeConstraints { (make) in
-            make.height.equalTo(25)
-            make.width.equalTo(25)
-            make.centerY.equalTo(btnCell.snp.centerY)
-            make.left.equalTo(btnheart.snp.right).offset(15)
-        }
-        btnCell.addSubview(btnMessage)
-        btnMessage.snp.makeConstraints { (make) in
-            make.height.equalTo(30)
-            make.width.equalTo(30)
-            make.centerY.equalTo(btnCell.snp.centerY)
-            make.left.equalTo(btnComment.snp.right).offset(15)
-        }
-        btnCell.addSubview(btnSave)
-        btnSave.snp.makeConstraints { (make) in
-            make.height.equalTo(30)
-            make.width.equalTo(30)
-            make.centerY.equalTo(btnCell.snp.centerY)
-            make.right.equalTo(btnCell.snp.right).offset(-10)
-        }
-    }
-    
-    func commentCellContent() {
-        let likeCount: UILabel = {
-            let label = UILabel()
-            label.text = "  좋아요 5개"
-            return label
-        }()
-        let name: UILabel = {
-            let view = UILabel()
-            view.text = "anonymous"
-            return view
-        }()
-        let moreComment: UIButton = {
-            let btn = UIButton()
-            btn.setTitle("댓글 더 보기", for: UIControl.State.normal)
-            return btn
-        }()
-        let inputComment: UIView = {
-            let view = UIView()
-            return view
-        }()
-        
-        commentCell.addSubview(likeCount)
-        commentCell.addSubview(name)
-        commentCell.addSubview(moreComment)
-        commentCell.addSubview(inputComment)
-        
-        likeCount.snp.makeConstraints { (make) in
-            make.height.equalTo(20)
-            make.width.equalToSuperview()
-            make.left.equalTo(commentCell.snp.left).offset(10)
-        }
-        name.snp.makeConstraints { (make) in
-            make.height.equalTo(60)
-            make.width.equalToSuperview()
-            make.top.equalTo(likeCount.snp.bottom)
-            make.left.equalTo(commentCell.snp.left).offset(10)
-        }
-        moreComment.snp.makeConstraints { (make) in
-            make.height.equalTo(20)
-            make.width.equalToSuperview()
-            make.top.equalTo(name.snp.bottom)
-            make.left.equalTo(commentCell.snp.left).offset(10)
-        }
-        inputComment.snp.makeConstraints { (make) in
-            make.height.equalTo(30)
-            make.width.equalToSuperview()
-            make.top.equalTo(moreComment.snp.bottom)
-            make.left.equalTo(commentCell.snp.left).offset(10)
-        }
-        let myComment: UITextField = {
-            let comment = UITextField()
-            comment.text = "input"
-            return comment
-            }()
-        
-            inputComment.addSubview(myComment)
-        
-            myComment.snp.makeConstraints { (make) in
-                make.height.equalToSuperview()
-                make.width.equalToSuperview()
-                make.top.equalTo(inputComment.snp.top)
-                }
-            }
-    
-    func timeCellText() {
-        timeCell.text = " 15분 전 "
-        timeCell.snp.makeConstraints { (make) in
-            make.rightMargin.equalToSuperview().offset(10)
-        }
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
 class FirstViewController:UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     
     let userName = ["eofjh_123", "hfdkl_.das", "ahsdk12jdl__", "iue9u2", "ndc._.ew", "ehq2312"]
@@ -467,7 +254,220 @@ class FirstViewController:UIViewController, UITableViewDelegate, UITableViewData
         return 700
 //        UITableViewAutomatic 알아보기 self sizing
     }
+}
 
+class instagramContentCell: UITableViewCell {
+    
+    let cellView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    let NameCell: UILabel = {
+       let label = UILabel()
+        label.text = "userName"
+        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.backgroundColor = .white
+        return label
+    }()
+    let pictureCell: UIImageView = {
+        var Image = UIImageView()
+        Image.backgroundColor = .white
+        Image.image = UIImage(named: "tiger.jpg")
+//        Image.contentMode = .scaleAspectFit
+        return Image
+    }()
+    let btnCell: UIView = {
+        var btn = UIView()
+        btn.backgroundColor = .white
+        return btn
+    }()
+    let commentCell: UIView = {
+        var btn = UIView()
+        btn.backgroundColor = .white
+        return btn
+    }()
+    let timeCell: UILabel = {
+        let view = UILabel()
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        superCellView()
+    }
+    
+    func superCellView() {
+        addSubview(cellView)
+        cellView.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.top.equalToSuperview().offset(80)
+        }
+        cellView.addSubview(NameCell)
+        NameCell.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalTo(50)
+            make.top.equalTo(cellView.snp.top)
+            make.left.equalTo(cellView.snp.left).offset(10)
+        }
+        cellView.addSubview(pictureCell)
+        pictureCell.snp.makeConstraints { (make) in
+            make.top.equalTo(NameCell.snp.bottom)
+            make.width.equalToSuperview()
+            make.height.equalTo(450)
+        }
+        cellView.addSubview(btnCell)
+        btnCellContent()
+        btnCell.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalTo(50)
+            make.top.equalTo(pictureCell.snp.bottom)
+        }
+        cellView.addSubview(commentCell)
+        commentCellContent()
+        commentCell.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalTo(130)
+            make.top.equalTo(btnCell.snp.bottom)
+        }
+        cellView.addSubview(timeCell)
+        timeCellText()
+        timeCell.snp.makeConstraints { (make) in
+            make.width.equalToSuperview()
+            make.height.equalTo(20)
+            make.top.equalTo(commentCell.snp.bottom)
+        }
+        
+    }
+    
+    func btnCellContent() {
+        let btnheart: UIButton = {
+            let btn = UIButton()
+            btn.setImage(UIImage(named: "heart.png"), for: .normal)
+            return btn
+        }()
+        let btnComment: UIButton = {
+            let btn = UIButton()
+            btn.setImage(UIImage(named: "comment.png"), for: .normal)
+            return btn
+        }()
+        let btnMessage: UIButton = {
+            let btn = UIButton()
+            btn.setImage(UIImage(named: "Message.png"), for: .normal)
+            return btn
+        }()
+        let btnSave: UIButton = {
+            let btn = UIButton()
+            btn.setImage(UIImage(named: "save.png"), for: .normal)
+            return btn
+        }()
+        btnCell.addSubview(btnheart)
+        btnheart.snp.makeConstraints { (make) in
+            make.height.equalTo(30)
+            make.width.equalTo(30)
+            make.centerY.equalTo(btnCell.snp.centerY)
+            make.left.equalTo(btnCell.snp.left).offset(10)
+        }
+        btnCell.addSubview(btnComment)
+        btnComment.snp.makeConstraints { (make) in
+            make.height.equalTo(25)
+            make.width.equalTo(25)
+            make.centerY.equalTo(btnCell.snp.centerY)
+            make.left.equalTo(btnheart.snp.right).offset(15)
+        }
+        btnCell.addSubview(btnMessage)
+        btnMessage.snp.makeConstraints { (make) in
+            make.height.equalTo(30)
+            make.width.equalTo(30)
+            make.centerY.equalTo(btnCell.snp.centerY)
+            make.left.equalTo(btnComment.snp.right).offset(15)
+        }
+        btnCell.addSubview(btnSave)
+        btnSave.snp.makeConstraints { (make) in
+            make.height.equalTo(30)
+            make.width.equalTo(30)
+            make.centerY.equalTo(btnCell.snp.centerY)
+            make.right.equalTo(btnCell.snp.right).offset(-10)
+        }
+    }
+    
+    func commentCellContent() {
+        let likeCount: UILabel = {
+            let label = UILabel()
+            label.text = "  좋아요 5개"
+            return label
+        }()
+        let name: UILabel = {
+            let view = UILabel()
+            view.text = "anonymous"
+            return view
+        }()
+        let moreComment: UIButton = {
+            let btn = UIButton()
+            btn.setTitle("댓글 더 보기", for: UIControl.State.normal)
+            return btn
+        }()
+        let inputComment: UIView = {
+            let view = UIView()
+            return view
+        }()
+        
+        commentCell.addSubview(likeCount)
+        commentCell.addSubview(name)
+        commentCell.addSubview(moreComment)
+        commentCell.addSubview(inputComment)
+        
+        likeCount.snp.makeConstraints { (make) in
+            make.height.equalTo(20)
+            make.width.equalToSuperview()
+            make.left.equalTo(commentCell.snp.left).offset(10)
+        }
+        name.snp.makeConstraints { (make) in
+            make.height.equalTo(60)
+            make.width.equalToSuperview()
+            make.top.equalTo(likeCount.snp.bottom)
+            make.left.equalTo(commentCell.snp.left).offset(10)
+        }
+        moreComment.snp.makeConstraints { (make) in
+            make.height.equalTo(20)
+            make.width.equalToSuperview()
+            make.top.equalTo(name.snp.bottom)
+            make.left.equalTo(commentCell.snp.left).offset(10)
+        }
+        inputComment.snp.makeConstraints { (make) in
+            make.height.equalTo(30)
+            make.width.equalToSuperview()
+            make.top.equalTo(moreComment.snp.bottom)
+            make.left.equalTo(commentCell.snp.left).offset(10)
+        }
+        let myComment: UITextField = {
+            let comment = UITextField()
+            comment.text = "input"
+            return comment
+            }()
+        
+            inputComment.addSubview(myComment)
+        
+            myComment.snp.makeConstraints { (make) in
+                make.height.equalToSuperview()
+                make.width.equalToSuperview()
+                make.top.equalTo(inputComment.snp.top)
+                }
+            }
+    
+    func timeCellText() {
+        timeCell.text = " 15분 전 "
+        timeCell.snp.makeConstraints { (make) in
+            make.rightMargin.equalToSuperview().offset(10)
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 class SecondViewController: UIViewController {
@@ -536,10 +536,45 @@ class ThirdViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 }
-class FourthViewController: UIViewController {
+class FourthViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    lazy private var CollectionView: UICollectionView = {
+        let CV = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+        CV.delegate = self
+        CV.dataSource = self
+        CV.frame = view.bounds
+        CV.register(secondCollectionViewCell.self, forCellWithReuseIdentifier: secondCollectionViewCell.identifier)
+        return CV
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+        view.addSubview(CollectionView)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = CollectionView.dequeueReusableCell(withReuseIdentifier: secondCollectionViewCell.identifier, for: indexPath)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.size.width/3, height: view.frame.size.width/3)
+    }
+}
+
+class secondCollectionViewCell: UICollectionViewCell {
+    static let identifier = "secondCollectionViewCell"
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 class FifthViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -552,30 +587,28 @@ class FifthViewController: UIViewController, UICollectionViewDelegate, UICollect
         CV.register(MyCollectionViewCell.self, forCellWithReuseIdentifier: MyCollectionViewCell.identifier)
         return CV
     }()
-    
+    let lblTest : UILabel = {
+        let lbl = UILabel()
+        lbl.backgroundColor = .lightGray
+        return lbl
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
-        let lblTest : UILabel = {
-            let lbl = UILabel()
-            lbl.backgroundColor = .lightGray
-            return lbl
-        }()
+    }
+
+    private func setupCollectionView() {
         view.addSubview(lblTest)
         lblTest.snp.makeConstraints { (make) in
             make.width.equalToSuperview()
             make.height.equalTo(100)
             make.top.equalTo(view.snp.top)
         }
-
-    }
-
-    private func setupCollectionView() {
         view.addSubview(CollectionView)
         CollectionView.snp.makeConstraints { (make) in
-            make.width.height.equalToSuperview()
-            make.top.equalTo(view.snp.top).offset(100)
-            make.bottom.equalTo(view.snp.bottom).offset(-200)
+            make.width.equalToSuperview()
+            make.top.equalTo(lblTest.snp.bottom)
+            make.bottom.equalTo(view.snp.bottom)
         }
         
         CollectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
@@ -583,7 +616,7 @@ class FifthViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     // CollectionView cell 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        return 20
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -644,12 +677,12 @@ struct ViewControllerRepresentable: UIViewControllerRepresentable {
     }
     @available( ios 14.0.0, *)
     func makeUIViewController(context: Context) -> UIViewController {
-        FifthViewController()
-        return FifthViewController()
+        FourthViewController()
+        return FourthViewController()
     }
 }
     @ available( ios 14.0, *)
-    struct FirstViewControllerRepresentable_PreviewProvider: PreviewProvider {
+    struct ViewControllerRepresentable_PreviewProvider: PreviewProvider {
         static var previews: some View {
             Group {
                 ViewControllerRepresentable()
