@@ -43,11 +43,6 @@ class FifthViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
         
         CollectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionReusableView.identifier)
-        CollectionView.register(FooterCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: FooterCollectionReusableView.identifier)
-    }
-    // CollectionView 반복
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
     }
     // CollectionView cell 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -60,15 +55,8 @@ class FifthViewController: UIViewController, UICollectionViewDelegate, UICollect
     }
     // CollectionViewHaeder, Footer
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionView.elementKindSectionHeader{
-            guard let header = CollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as? HeaderCollectionReusableView else {
-                return UICollectionReusableView()
-            }
-//            header.configure(with: true)
-            return header
-        }
-        //Footer
-            return CollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: FooterCollectionReusableView.identifier, for: indexPath)
+        let header = CollectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as! HeaderCollectionReusableView
+        return header
     }
     // CollectionView 공백
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -93,9 +81,5 @@ class FifthViewController: UIViewController, UICollectionViewDelegate, UICollect
 //            return .zero
 //        }
         return CGSize(width: view.frame.size.width, height: view.frame.size.height / 2)
-    }
-    //CollectionView footer 크기
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        return CGSize(width: view.frame.size.width, height: view.frame.size.width)
     }
 }

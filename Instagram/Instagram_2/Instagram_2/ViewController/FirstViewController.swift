@@ -7,7 +7,7 @@
 
 import UIKit
 import SnapKit
-class FirstViewController:UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+class FirstViewController:UIViewController {
     
     let userName = ["eofjh_123", "hfdkl_.das", "ahsdk12jdl__", "iue9u2", "ndc._.ew", "ehq2312"]
     let userPictureName = ["만리장성.jpg","베이징.jpg","병마.jpg","중국 운남산.jpg","판다.jpg","shop.jpg"]
@@ -20,22 +20,6 @@ class FirstViewController:UIViewController, UITableViewDelegate, UITableViewData
         return btn
     }()
     
-    lazy var myCollectionView: UICollectionView = {
-       let layout = UICollectionViewFlowLayout()
-       let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-       layout.scrollDirection = .horizontal
-       layout.minimumLineSpacing = 20
-       view.delegate = self
-       view.dataSource = self
-       view.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
-       view.backgroundColor = .white
-       view.snp.makeConstraints { (make) in
-            make.height.equalTo(100)
-            make.width.equalTo(430)
-       }
-       return view
-    }()
-        
     lazy var myTableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .white
@@ -44,7 +28,7 @@ class FirstViewController:UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         tableView.allowsMultipleSelection = true
-//        tableView.tableHeaderView = myCollectionView
+
         return tableView
     }()
     
@@ -86,20 +70,17 @@ class FirstViewController:UIViewController, UITableViewDelegate, UITableViewData
     
     func setupTableView() {
         self.view.addSubview(myTableView)
-//        myTableView.addSubview(myCollectionView)
         
         myTableView.snp.makeConstraints { (make) in
             make.top.equalTo(HeaderTitleView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
         }
-//        myCollectionView.snp.makeConstraints { (make) in
-//            make.top.equalToSuperview()
-//        }
         myTableView.register(instagramContentCell.self, forCellReuseIdentifier: "Cell")
+        myTableView.register(InstagramStoryCell.self, forCellReuseIdentifier: "instagramStoryCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userName.count
+        return userName.count + 1
     }
 
     
@@ -151,18 +132,20 @@ class FirstViewController:UIViewController, UITableViewDelegate, UITableViewData
         NavVC.modalPresentationStyle = .fullScreen
         present(NavVC, animated: true)
     }
+}
 
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
-    }
-    
+extension FirstViewController:UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 20
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 50, height: 50)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let StoryCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        
+        let StoryCell = collectionView.dequeueReusableCell(withReuseIdentifier: FirstCollectionViewCell.identifier, for: indexPath) as! FirstCollectionViewCell
+        /*
         let StoryName: UILabel = {
            let label = UILabel()
             label.text = "Name"
@@ -174,24 +157,45 @@ class FirstViewController:UIViewController, UITableViewDelegate, UITableViewData
         StoryCell.contentView.addSubview(StoryName)
 
         StoryName.snp.makeConstraints { (make) in
-            make.width.equalToSuperview()
+            make.width.equalTo(60)//.equalToSuperview()
             make.height.equalTo(20)
             make.top.equalTo(StoryCell.snp.bottom)
+            make.bottom.equalToSuperview()
             make.centerX.equalTo(StoryCell.snp.centerX).offset(4)
         }
-
+         */
         return StoryCell
     }
+    
+}
+
+extension FirstViewController:UITableViewDelegate, UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "instagramStoryCell") as! InstagramStoryCell
+            cell.myCollectionView.delegate = self
+            cell.myCollectionView.dataSource = self
+            
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! instagramContentCell
         
         cell.backgroundColor = .white
-        cell.NameCell.text = userName[indexPath.row]
-        cell.pictureCell.image = UIImage(named: userPictureName[indexPath.row])
+        cell.NameCell.text = userName[indexPath.row - 1]
+        cell.pictureCell.image = UIImage(named: userPictureName[indexPath.row - 1])
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0{
+            return 100
+        }
         return 700
 //        UITableViewAutomatic 알아보기 self sizing
     }

@@ -7,6 +7,38 @@
 
 import SnapKit
 import UIKit
+
+class InstagramStoryCell: UITableViewCell{
+    public lazy var myCollectionView: UICollectionView = {
+       let layout = UICollectionViewFlowLayout()
+       let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+       layout.scrollDirection = .horizontal
+        view.isScrollEnabled = true
+       layout.minimumLineSpacing = 20
+        view.register(FirstCollectionViewCell.self, forCellWithReuseIdentifier: FirstCollectionViewCell.identifier)
+       view.backgroundColor = .white
+       return view
+    }()
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        superCellView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func superCellView(){
+        self.contentView.addSubview(myCollectionView)
+        
+        myCollectionView.snp.makeConstraints{
+            $0.edges.equalToSuperview()
+            $0.height.equalTo(100)
+            $0.width.equalTo(430)
+        }
+    }
+}
+
 class instagramContentCell: UITableViewCell {
     
     let cellView: UIView = {

@@ -196,27 +196,3 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     
 }
 
-class FooterCollectionReusableView: UICollectionReusableView {
-    static let identifier = "FooterCollectionReusableView"
-    
-    private let imageView: UIImageView = {
-      let imageView = UIImageView(image: UIImage(named: "판다.jpg"))
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = true
-        return imageView
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addSubview(imageView)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        imageView.frame = bounds
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
